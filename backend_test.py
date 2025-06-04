@@ -312,6 +312,51 @@ class ThriveRemoteAPITester:
             notifications = response.get('notifications', [])
             print(f"Found {len(notifications)} notifications")
         return success
+        
+    def test_service_jobs_hub(self):
+        """Test service jobs hub data"""
+        success, response = self.run_test(
+            "Service Jobs Hub Data",
+            "GET",
+            "api/service-jobs/data",
+            200
+        )
+        if success:
+            jobs = response.get('jobs', [])
+            print(f"Found {len(jobs)} service jobs")
+            if jobs:
+                print(f"Sample job: {jobs[0].get('title')} at {jobs[0].get('company')}")
+        return success
+
+    def test_music_player_data(self):
+        """Test music player data"""
+        success, response = self.run_test(
+            "Music Player Data",
+            "GET",
+            "api/music/tracks",
+            200
+        )
+        if success:
+            tracks = response.get('tracks', [])
+            print(f"Found {len(tracks)} music tracks")
+            if tracks:
+                print(f"Sample track: {tracks[0].get('title')} by {tracks[0].get('artist')}")
+        return success
+
+    def test_music_player_playlists(self):
+        """Test music player playlists"""
+        success, response = self.run_test(
+            "Music Player Playlists",
+            "GET",
+            "api/music/playlists",
+            200
+        )
+        if success:
+            playlists = response.get('playlists', [])
+            print(f"Found {len(playlists)} playlists")
+            if playlists:
+                print(f"Sample playlist: {playlists[0].get('name')} with {len(playlists[0].get('tracks', []))} tracks")
+        return success
 
 def main():
     # Setup
