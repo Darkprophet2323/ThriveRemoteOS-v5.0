@@ -1158,10 +1158,17 @@ const App = () => {
     </div>
   );
 
-  // Quick Access Panel Component (Fixed to prevent flashing)
-  const QuickAccessPanel = () => {
+  // Quick Access Panel Component (Optimized to prevent excessive re-renders)
+  const QuickAccessPanel = React.memo(() => {
     const [panelTipAmount, setPanelTipAmount] = useState(0);
     const [panelBillAmount, setPanelBillAmount] = useState(0);
+
+    // Memoized calculation to prevent unnecessary re-renders
+    const handleBillChange = React.useCallback((e) => {
+      const amount = parseFloat(e.target.value) || 0;
+      setPanelBillAmount(amount);
+      setPanelTipAmount(amount * 0.18);
+    }, []);
 
     return (
       <div className="quick-access-panel">
@@ -1189,11 +1196,7 @@ const App = () => {
             type="number" 
             placeholder="Bill amount"
             value={panelBillAmount || ''}
-            onChange={(e) => {
-              const amount = parseFloat(e.target.value) || 0;
-              setPanelBillAmount(amount);
-              setPanelTipAmount(amount * 0.18);
-            }}
+            onChange={handleBillChange}
           />
           <div className="tip-result">
             18% Tip: ${panelTipAmount.toFixed(2)}
@@ -1201,7 +1204,7 @@ const App = () => {
         </div>
       </div>
     );
-  };
+  });
 
   // Applications Menu Component
   const ApplicationsMenu = () => {
