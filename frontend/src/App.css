@@ -367,14 +367,14 @@ body, html {
 }
 
 .link-icon {
-  font-size: 18px;
-  width: 28px;
-  height: 28px;
+  font-size: 9px;
+  width: 14px;
+  height: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: rgba(137, 180, 250, 0.1);
-  border-radius: 6px;
+  border-radius: 3px;
   flex-shrink: 0;
 }
 
