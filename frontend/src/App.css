@@ -1479,12 +1479,12 @@ body, html {
 }
 
 .menu-app .app-icon {
-  font-size: 32px;
-  margin-bottom: 8px;
+  font-size: 20px;
+  margin-bottom: 6px;
 }
 
 .menu-app .app-name {
-  font-size: 12px;
+  font-size: 11px;
   color: #cdd6f4;
   font-weight: 500;
   line-height: 1.2;
