@@ -53,6 +53,49 @@ body, html {
     linear-gradient(135deg, rgba(30, 30, 46, 0.8) 0%, rgba(49, 50, 68, 0.8) 50%, rgba(69, 71, 90, 0.8) 100%);
 }
 
+/* === DESKTOP LOGO === */
+.desktop-logo {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 100;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(17, 17, 27, 0.9);
+  border: 2px solid rgba(137, 180, 250, 0.3);
+  border-radius: 12px;
+  padding: 12px 16px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.logo-icon {
+  font-size: 24px;
+  color: #89b4fa;
+}
+
+.logo-text {
+  color: #cdd6f4;
+}
+
+.logo-title {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+  color: #89b4fa;
+}
+
+.logo-version {
+  font-size: 12px;
+  font-weight: 500;
+  opacity: 0.8;
+  color: #a6adc8;
+}
+
 /* === DESKTOP WIDGETS === */
 .desktop-widget {
   position: absolute;
