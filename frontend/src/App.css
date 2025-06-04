@@ -111,6 +111,45 @@ body, html {
   }
 }
 
+/* === REFRESH WARNING === */
+.refresh-warning {
+  position: fixed;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1600;
+}
+
+.refresh-btn {
+  background: rgba(243, 139, 168, 0.9);
+  border: 2px solid rgba(243, 139, 168, 0.6);
+  border-radius: 8px;
+  padding: 8px 16px;
+  color: #1e1e2e;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 16px rgba(243, 139, 168, 0.3);
+  animation: warningPulse 2s infinite;
+}
+
+.refresh-btn:hover {
+  background: rgba(243, 139, 168, 1);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(243, 139, 168, 0.5);
+}
+
+@keyframes warningPulse {
+  0%, 100% { 
+    box-shadow: 0 4px 16px rgba(243, 139, 168, 0.3);
+  }
+  50% { 
+    box-shadow: 0 4px 20px rgba(243, 139, 168, 0.6);
+  }
+}
+
 /* === DESKTOP WIDGETS === */
 .desktop-widget {
   position: absolute;
