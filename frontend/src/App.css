@@ -206,13 +206,13 @@ body, html {
 
 /* === WINDOW TITLEBAR === */
 .window-titlebar {
-  height: 40px;
+  height: 20px;
   background: linear-gradient(135deg, rgba(49, 50, 68, 0.9) 0%, rgba(69, 71, 90, 0.9) 100%);
   border-bottom: 1px solid rgba(205, 214, 244, 0.1);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 16px;
+  padding: 0 8px;
   cursor: move;
   user-select: none;
 }
