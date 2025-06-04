@@ -425,7 +425,176 @@ body, html {
   color: #a6adc8;
 }
 
-/* === APPLICATIONS MENU === */
+/* === MUSIC PLAYER INTERFACE === */
+.music-player-interface {
+  padding: 0;
+}
+
+.now-playing {
+  background: rgba(49, 50, 68, 0.8);
+  padding: 24px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid rgba(137, 180, 250, 0.2);
+}
+
+.track-info {
+  flex: 1;
+}
+
+.track-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #cdd6f4;
+  margin-bottom: 4px;
+}
+
+.track-artist {
+  font-size: 14px;
+  color: #a6adc8;
+  opacity: 0.8;
+}
+
+.player-controls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.control-btn {
+  width: 48px;
+  height: 48px;
+  border: none;
+  background: rgba(137, 180, 250, 0.1);
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #cdd6f4;
+}
+
+.control-btn:hover {
+  background: rgba(137, 180, 250, 0.3);
+  transform: scale(1.05);
+}
+
+.music-sources {
+  margin-bottom: 32px;
+}
+
+.music-sources h3 {
+  color: #89b4fa;
+  margin-bottom: 16px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.playlist-section {
+  margin-bottom: 32px;
+}
+
+.playlist-section h3 {
+  color: #89b4fa;
+  margin-bottom: 16px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.track-list {
+  background: rgba(49, 50, 68, 0.6);
+  border-radius: 8px;
+  padding: 16px;
+  border: 1px solid rgba(205, 214, 244, 0.1);
+}
+
+.track-item {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 8px;
+  background: rgba(30, 30, 46, 0.6);
+}
+
+.track-item:hover {
+  background: rgba(69, 71, 90, 0.8);
+}
+
+.track-item.active {
+  background: rgba(137, 180, 250, 0.2);
+  border: 1px solid rgba(137, 180, 250, 0.5);
+}
+
+.track-number {
+  width: 32px;
+  text-align: center;
+  color: #a6adc8;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.track-details {
+  flex: 1;
+  margin-left: 16px;
+}
+
+.track-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #cdd6f4;
+  margin-bottom: 2px;
+}
+
+.track-artist {
+  font-size: 12px;
+  color: #a6adc8;
+  opacity: 0.8;
+}
+
+.track-genre {
+  font-size: 12px;
+  color: #89b4fa;
+  margin-right: 16px;
+  padding: 4px 8px;
+  background: rgba(137, 180, 250, 0.1);
+  border-radius: 4px;
+}
+
+.play-button {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(137, 180, 250, 0.2);
+  border-radius: 50%;
+  font-size: 12px;
+  transition: all 0.2s ease;
+}
+
+.play-button:hover {
+  background: rgba(137, 180, 250, 0.4);
+  transform: scale(1.1);
+}
+
+.music-tools {
+  margin-bottom: 24px;
+}
+
+.music-tools h3 {
+  color: #89b4fa;
+  margin-bottom: 16px;
+  font-size: 18px;
+  font-weight: 600;
+}
 .applications-menu {
   position: fixed;
   bottom: 60px;
