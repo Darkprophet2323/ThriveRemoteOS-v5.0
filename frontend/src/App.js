@@ -109,6 +109,9 @@ const App = () => {
 
   const openApplication = (appId, appName) => {
     if (!activeWindows.find(w => w.id === appId)) {
+      const baseX = Math.max(120, (window.innerWidth / 2) - 200); // Center horizontally, avoid left widgets
+      const baseY = Math.max(120, 120); // Below warning and news ticker, avoid widgets
+      
       const newWindow = {
         id: appId,
         title: appName,
@@ -116,8 +119,8 @@ const App = () => {
         minimized: false,
         maximized: false,
         position: { 
-          x: Math.max(30, 30 + (activeWindows.length * 15)), 
-          y: Math.max(60, 60 + (activeWindows.length * 15)) 
+          x: baseX + (activeWindows.length * 20), 
+          y: baseY + (activeWindows.length * 20) 
         },
         zIndex: 1000 + activeWindows.length,
         size: { width: 400, height: 300 }
