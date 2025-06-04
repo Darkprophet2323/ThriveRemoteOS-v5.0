@@ -46,6 +46,13 @@ body, html {
   z-index: 1;
 }
 
+/* Peak District Desktop Variant */
+.desktop-background.peak-district {
+  background: 
+    url('https://images.unsplash.com/photo-1594981005649-6ffab8d8a8d1?w=1920&h=1080&fit=crop&overlay=true&overlay-color=1e1e2e&overlay-opacity=0.7') center/cover no-repeat,
+    linear-gradient(135deg, rgba(30, 30, 46, 0.8) 0%, rgba(49, 50, 68, 0.8) 50%, rgba(69, 71, 90, 0.8) 100%);
+}
+
 /* === DESKTOP WIDGETS === */
 .desktop-widget {
   position: absolute;
