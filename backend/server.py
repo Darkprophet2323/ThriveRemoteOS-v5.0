@@ -1588,6 +1588,194 @@ async def update_pong_score(score_data: dict, session_token: str):
         "points_earned": 5
     }
 
+@app.get("/api/notifications")
+async def get_notifications():
+    """Get user notifications"""
+    notifications = [
+        {
+            "id": "1",
+            "type": "success",
+            "title": "Welcome to ThriveRemote!",
+            "message": "Your account has been set up successfully.",
+            "timestamp": "2023-10-01T12:00:00Z"
+        },
+        {
+            "id": "2", 
+            "type": "info",
+            "title": "New Job Alert",
+            "message": "5 new remote jobs match your preferences.",
+            "timestamp": "2023-10-01T11:30:00Z"
+        }
+    ]
+    return {"notifications": notifications}
+
+@app.get("/api/music/tracks")
+async def get_music_tracks():
+    """Get music tracks for the web player"""
+    tracks = [
+        {
+            "id": 1,
+            "title": "Focus Flow",
+            "artist": "Productivity Beats",
+            "genre": "Ambient",
+            "duration": "4:32",
+            "url": "https://example.com/track1.mp3"
+        },
+        {
+            "id": 2,
+            "title": "Deep Work",
+            "artist": "Study Music",
+            "genre": "Lo-Fi",
+            "duration": "3:45",
+            "url": "https://example.com/track2.mp3"
+        },
+        {
+            "id": 3,
+            "title": "Coding Vibes",
+            "artist": "Developer Tracks",
+            "genre": "Electronic",
+            "duration": "5:12",
+            "url": "https://example.com/track3.mp3"
+        },
+        {
+            "id": 4,
+            "title": "Remote Morning",
+            "artist": "Work From Home",
+            "genre": "Chill",
+            "duration": "3:58",
+            "url": "https://example.com/track4.mp3"
+        },
+        {
+            "id": 5,
+            "title": "Productivity Boost",
+            "artist": "Focus Music",
+            "genre": "Instrumental",
+            "duration": "4:21",
+            "url": "https://example.com/track5.mp3"
+        }
+    ]
+    return {"tracks": tracks}
+
+@app.get("/api/music/playlists")
+async def get_music_playlists():
+    """Get music playlists"""
+    playlists = [
+        {
+            "id": 1,
+            "name": "Productivity Focus",
+            "description": "Music to enhance focus and productivity",
+            "tracks": [1, 2, 5],
+            "duration": "12:36"
+        },
+        {
+            "id": 2,
+            "name": "Coding Session",
+            "description": "Perfect for programming and development",
+            "tracks": [3, 1, 4],
+            "duration": "13:42"
+        },
+        {
+            "id": 3,
+            "name": "Remote Work Vibes",
+            "description": "Background music for working from home",
+            "tracks": [4, 2, 5, 1],
+            "duration": "16:36"
+        }
+    ]
+    return {"playlists": playlists}
+
+@app.get("/api/service-jobs/data")
+async def get_service_jobs():
+    """Get service and restaurant job data"""
+    jobs = [
+        {
+            "id": 1,
+            "title": "Server/Waitress",
+            "company": "The Garden Restaurant",
+            "location": "Phoenix, AZ",
+            "type": "Full-time",
+            "pay": "$15-18/hour + tips",
+            "description": "Seeking experienced servers for upscale dining",
+            "requirements": ["2+ years experience", "Weekend availability"],
+            "posted": "2 days ago"
+        },
+        {
+            "id": 2,
+            "title": "Bartender",
+            "company": "Rooftop Lounge",
+            "location": "Scottsdale, AZ",
+            "type": "Part-time",
+            "pay": "$12/hour + tips",
+            "description": "Evening bartender position at trendy rooftop bar",
+            "requirements": ["Mixology experience", "TIPS certification"],
+            "posted": "1 day ago"
+        },
+        {
+            "id": 3,
+            "title": "Host/Hostess",
+            "company": "Cafe Central",
+            "location": "Tempe, AZ",
+            "type": "Part-time",
+            "pay": "$14-16/hour",
+            "description": "Friendly host needed for busy breakfast spot",
+            "requirements": ["Customer service skills", "Morning availability"],
+            "posted": "3 days ago"
+        },
+        {
+            "id": 4,
+            "title": "Food Runner",
+            "company": "Steakhouse Prime",
+            "location": "Phoenix, AZ",
+            "type": "Full-time",
+            "pay": "$13/hour + tip share",
+            "description": "Fast-paced food runner position",
+            "requirements": ["Physical stamina", "Team player"],
+            "posted": "1 week ago"
+        },
+        {
+            "id": 5,
+            "title": "Barista",
+            "company": "Morning Brew Coffee",
+            "location": "Mesa, AZ",
+            "type": "Part-time",
+            "pay": "$13-15/hour",
+            "description": "Coffee enthusiast wanted for local coffee shop",
+            "requirements": ["Coffee knowledge", "Early morning availability"],
+            "posted": "4 days ago"
+        }
+    ]
+    
+    training_resources = [
+        {
+            "name": "ServSafe Certification",
+            "type": "Food Safety",
+            "url": "https://servsafe.com/",
+            "cost": "$15",
+            "duration": "2-3 hours"
+        },
+        {
+            "name": "TIPS Certification", 
+            "type": "Alcohol Service",
+            "url": "https://gettips.com/",
+            "cost": "$40",
+            "duration": "2-3 hours"
+        },
+        {
+            "name": "Restaurant Skills Course",
+            "type": "General Training",
+            "url": "https://coursera.org/courses?query=hospitality",
+            "cost": "Free-$49",
+            "duration": "4-6 weeks"
+        }
+    ]
+    
+    return {
+        "jobs": jobs,
+        "training_resources": training_resources,
+        "total_jobs": len(jobs),
+        "job_categories": ["Server/Waitress", "Bartender", "Host/Hostess", "Food Runner", "Barista"]
+    }
+
 @app.get("/api/realtime/notifications")
 async def get_notifications(session_token: str):
     """Get real-time notifications for user"""
