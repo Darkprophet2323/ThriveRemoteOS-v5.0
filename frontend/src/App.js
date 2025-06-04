@@ -306,11 +306,32 @@ const App = () => {
               <div className="link-desc">Location-independent remote work</div>
             </div>
           </a>
-          <a href="https://justremote.co/" target="_blank" rel="noopener noreferrer" className="app-link">
-            <div className="link-icon">🎯</div>
+          <a href="https://flexjobs.com/" target="_blank" rel="noopener noreferrer" className="app-link">
+            <div className="link-icon">🔍</div>
             <div className="link-details">
-              <div className="link-title">JustRemote</div>
-              <div className="link-desc">Remote-first companies only</div>
+              <div className="link-title">FlexJobs</div>
+              <div className="link-desc">Premium vetted remote and flexible jobs</div>
+            </div>
+          </a>
+          <a href="https://indeed.com/q-remote-jobs.html" target="_blank" rel="noopener noreferrer" className="app-link">
+            <div className="link-icon">🌍</div>
+            <div className="link-details">
+              <div className="link-title">Indeed Remote</div>
+              <div className="link-desc">Global job search with remote filters</div>
+            </div>
+          </a>
+          <a href="https://www.glassdoor.com/Jobs/remote-jobs-SRCH_IL.0,6_IS11047_KO7,16.htm" target="_blank" rel="noopener noreferrer" className="app-link">
+            <div className="link-icon">🏢</div>
+            <div className="link-details">
+              <div className="link-title">Glassdoor Remote</div>
+              <div className="link-desc">Remote jobs with company insights and reviews</div>
+            </div>
+          </a>
+          <a href="https://remoteok.io/" target="_blank" rel="noopener noreferrer" className="app-link">
+            <div className="link-icon">📱</div>
+            <div className="link-details">
+              <div className="link-title">RemoteOK</div>
+              <div className="link-desc">Tech remote jobs board with real-time updates</div>
             </div>
           </a>
         </div>
