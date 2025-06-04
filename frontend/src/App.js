@@ -135,11 +135,54 @@ const App = () => {
       w.id === windowId ? { 
         ...w, 
         maximized: !w.maximized,
-        position: w.maximized ? { x: 50, y: 50 } : { x: 0, y: 0 },
+        position: w.maximized ? { x: 100, y: 80 } : { x: 0, y: 0 },
         size: w.maximized ? { width: 1000, height: 700 } : { width: window.innerWidth, height: window.innerHeight - 50 }
       } : w
     ));
   };
+
+  // Window dragging functionality
+  const [dragging, setDragging] = useState(null);
+  const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
+
+  const handleMouseDown = (e, windowId) => {
+    const window = activeWindows.find(w => w.id === windowId);
+    if (window && !window.maximized) {
+      setDragging(windowId);
+      setDragOffset({
+        x: e.clientX - window.position.x,
+        y: e.clientY - window.position.y
+      });
+    }
+  };
+
+  const handleMouseMove = (e) => {
+    if (dragging) {
+      setActiveWindows(prev => prev.map(w => 
+        w.id === dragging ? {
+          ...w,
+          position: {
+            x: e.clientX - dragOffset.x,
+            y: e.clientY - dragOffset.y
+          }
+        } : w
+      ));
+    }
+  };
+
+  const handleMouseUp = () => {
+    setDragging(null);
+  };
+
+  // Add event listeners for dragging
+  useEffect(() => {
+    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mouseup', handleMouseUp);
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseup', handleMouseUp);
+    };
+  }, [dragging, dragOffset]);
 
   // ENHANCED CONTENT COMPONENTS
 
