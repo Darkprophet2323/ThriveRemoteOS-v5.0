@@ -556,22 +556,27 @@ body, html {
   overflow-y: auto;
   overflow-x: hidden;
   padding: 8px;
+  height: calc(100% - 50px); /* Account for header and footer */
+  min-height: 200px; /* Ensure minimum height for scrolling */
 }
 
 .file-manager-content {
-  height: 100%;
+  min-height: 100%;
 }
 
+/* Force scrollable content with many items */
 .folder-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
   gap: 8px;
+  min-height: 300px; /* Force height to enable scrolling */
 }
 
 .folder-list {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  min-height: 400px; /* Force height for list view scrolling */
 }
 
 .folder-item {
