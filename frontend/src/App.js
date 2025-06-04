@@ -1213,7 +1213,7 @@ const App = () => {
             zIndex: window.zIndex
           }}
         >
-          <div className="window-titlebar">
+          <div className="window-titlebar" onMouseDown={(e) => handleMouseDown(e, window.id)}>
             <div className="window-title">
               <span className="window-icon">{desktopApplications.find(app => app.id === window.app)?.icon || '📄'}</span>
               <span className="title-text">{window.title}</span>
