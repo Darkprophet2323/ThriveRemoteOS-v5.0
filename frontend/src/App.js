@@ -1343,41 +1343,73 @@ const App = () => {
     }
   };
 
-  const FileManager = React.memo(() => (
-    <div className="file-manager">
-      <div className="file-manager-header">
-        <div className="path-bar">
-          <span className="path-segment">Home</span>
-          <span className="path-separator">—</span>
-          <span className="path-segment">ThriveRemote</span>
+  // Enhanced File Manager with proper functionality
+  const FileManager = React.memo(() => {
+    const [viewMode, setViewMode] = useState('grid');
+    
+    const actualFileManagerFolders = [
+      { name: 'Remote Jobs', icon: '💼', color: '#3498db', items: 24, onClick: () => openApplication('jobs', 'Job Hunter') },
+      { name: 'AI Tools', icon: '🤖', color: '#9b59b6', items: 9, onClick: () => openApplication('ai-tools', 'AI Assistant Hub') },
+      { name: 'Peak District', icon: '🏔️', color: '#2ecc71', items: 15, onClick: () => openApplication('relocation', 'Relocation Helper') },
+      { name: 'Waitress Tools', icon: '🧮', color: '#e67e22', items: 16, onClick: () => openApplication('waitress-tools', 'Waitress Toolkit') },
+      { name: 'Journey Planning', icon: '🗺️', color: '#1abc9c', items: 16, onClick: () => openApplication('network', 'Network Tools') },
+      { name: 'Music Streaming', icon: '🎵', color: '#8e44ad', items: 6, onClick: () => openApplication('music', 'Music Player') },
+      { name: 'Finance Tools', icon: '💰', color: '#f39c12', items: 4, onClick: () => openApplication('finance', 'Finance Manager') },
+      { name: 'Learning Resources', icon: '📚', color: '#e74c3c', items: 8, onClick: () => openApplication('learning', 'Learning Hub') },
+      { name: 'Task Management', icon: '📋', color: '#34495e', items: 6, onClick: () => openApplication('tasks', 'Task Planner') },
+      { name: 'Career Development', icon: '📊', color: '#95a5a6', items: 12, onClick: () => openApplication('career', 'Career Tools') },
+      { name: 'Remote Workspace', icon: '🏢', color: '#16a085', items: 7, onClick: () => openApplication('workspace', 'Remote Workspace') },
+      { name: 'System Files', icon: '⚙️', color: '#7f8c8d', items: 23, onClick: () => openApplication('settings', 'System Settings') }
+    ];
+
+    return (
+      <div className="file-manager">
+        <div className="file-manager-header">
+          <div className="path-bar">
+            <span className="path-segment">Home</span>
+            <span className="path-separator">—</span>
+            <span className="path-segment">ThriveRemote</span>
+          </div>
+          <div className="view-controls">
+            <button 
+              className={`view-btn ${viewMode === 'grid' ? 'active' : ''}`}
+              onClick={() => setViewMode('grid')}
+            >
+              Grid
+            </button>
+            <button 
+              className={`view-btn ${viewMode === 'list' ? 'active' : ''}`}
+              onClick={() => setViewMode('list')}
+            >
+              List
+            </button>
+          </div>
         </div>
-        <div className="view-controls">
-          <button className="view-btn active">Grid</button>
-          <button className="view-btn">List</button>
-        </div>
-      </div>
-      <div className="file-manager-content-scroll">
-        <div className="file-manager-content">
-          <div className="folder-grid">
-            {fileManagerFolders.map((folder, index) => (
-              <div key={index} className="folder-item" onClick={folder.onClick}>
-                <div className="folder-icon" style={{ backgroundColor: folder.color }}>
-                  <span>{folder.icon}</span>
+        <div className="file-manager-content-scroll">
+          <div className="file-manager-content">
+            <div className={`folder-${viewMode}`}>
+              {actualFileManagerFolders.map((folder, index) => (
+                <div key={index} className={`folder-item ${viewMode}`} onClick={folder.onClick}>
+                  <div className="folder-icon" style={{ backgroundColor: folder.color }}>
+                    <span>{folder.icon}</span>
+                  </div>
+                  <div className="folder-details">
+                    <div className="folder-name">{folder.name}</div>
+                    <div className="folder-info">{folder.items} items</div>
+                  </div>
                 </div>
-                <div className="folder-name">{folder.name}</div>
-                <div className="folder-info">{folder.items} items</div>
-              </div>
-            ))}
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className="file-manager-footer">
+          <div className="status-info">
+            {actualFileManagerFolders.length} folders • {actualFileManagerFolders.reduce((sum, folder) => sum + folder.items, 0)} total items
           </div>
         </div>
       </div>
-      <div className="file-manager-footer">
-        <div className="status-info">
-          {fileManagerFolders.length} folders • {fileManagerFolders.reduce((sum, folder) => sum + folder.items, 0)} total items
-        </div>
-      </div>
-    </div>
-  ));
+    );
+  });
 
   // Quick Access Panel Component (Optimized to prevent excessive re-renders)
   const QuickAccessPanel = React.memo(() => {
