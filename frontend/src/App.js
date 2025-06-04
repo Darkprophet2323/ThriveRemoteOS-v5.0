@@ -116,11 +116,11 @@ const App = () => {
         minimized: false,
         maximized: false,
         position: { 
-          x: Math.max(50, 50 + (activeWindows.length * 20)), 
-          y: Math.max(40, 40 + (activeWindows.length * 20)) 
+          x: Math.max(30, 30 + (activeWindows.length * 15)), 
+          y: Math.max(60, 60 + (activeWindows.length * 15)) 
         },
         zIndex: 1000 + activeWindows.length,
-        size: { width: 500, height: 350 }
+        size: { width: 400, height: 300 }
       };
       
       setActiveWindows(prev => [...prev, newWindow]);
