@@ -1347,6 +1347,11 @@ const App = () => {
   const FileManager = React.memo(() => {
     const [viewMode, setViewMode] = useState('grid');
     
+    const handleViewChange = (newMode) => {
+      console.log(`File Manager: Switching view from ${viewMode} to ${newMode}`);
+      setViewMode(newMode);
+    };
+    
     const actualFileManagerFolders = [
       { name: 'Remote Jobs', icon: '💼', color: '#3498db', items: 24, onClick: () => openApplication('jobs', 'Job Hunter') },
       { name: 'AI Tools', icon: '🤖', color: '#9b59b6', items: 9, onClick: () => openApplication('ai-tools', 'AI Assistant Hub') },
@@ -1370,6 +1375,8 @@ const App = () => {
       { name: 'Archive', icon: '📦', color: '#95a5a6', items: 145, onClick: () => openApplication('archive', 'Archive') }
     ];
 
+    console.log(`File Manager: Current view mode is ${viewMode}, showing ${actualFileManagerFolders.length} folders`);
+
     return (
       <div className="file-manager">
         <div className="file-manager-header">
@@ -1381,13 +1388,13 @@ const App = () => {
           <div className="view-controls">
             <button 
               className={`view-btn ${viewMode === 'grid' ? 'active' : ''}`}
-              onClick={() => setViewMode('grid')}
+              onClick={() => handleViewChange('grid')}
             >
               Grid
             </button>
             <button 
               className={`view-btn ${viewMode === 'list' ? 'active' : ''}`}
-              onClick={() => setViewMode('list')}
+              onClick={() => handleViewChange('list')}
             >
               List
             </button>
