@@ -96,8 +96,8 @@ const App = () => {
         minimized: false,
         maximized: false,
         position: { 
-          x: Math.max(50, 50 + (activeWindows.length * 30)), 
-          y: Math.max(50, 50 + (activeWindows.length * 30)) 
+          x: Math.max(100, 100 + (activeWindows.length * 40)), 
+          y: Math.max(80, 80 + (activeWindows.length * 40)) 
         },
         zIndex: 1000 + activeWindows.length,
         size: { width: 1000, height: 700 }
