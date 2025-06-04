@@ -495,7 +495,134 @@ body, html {
   height: 100%;
   display: flex;
   flex-direction: column;
-  background: rgba(30, 30, 46, 0.95);
+  background: rgba(30, 30, 46, 0.98);
+}
+
+.file-manager-header {
+  padding: 6px 8px;
+  border-bottom: 1px solid rgba(205, 214, 244, 0.1);
+  background: rgba(49, 50, 68, 0.6);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 25px;
+  flex-shrink: 0;
+}
+
+.path-bar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 8px;
+  color: #cdd6f4;
+}
+
+.path-segment {
+  color: #89b4fa;
+  font-weight: 500;
+}
+
+.path-separator {
+  color: #a6adc8;
+}
+
+.view-controls {
+  display: flex;
+  gap: 4px;
+}
+
+.view-btn {
+  padding: 2px 6px;
+  border: 1px solid rgba(205, 214, 244, 0.2);
+  background: rgba(49, 50, 68, 0.6);
+  color: #cdd6f4;
+  font-size: 7px;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.view-btn.active {
+  background: rgba(137, 180, 250, 0.2);
+  border-color: rgba(137, 180, 250, 0.4);
+}
+
+.view-btn:hover {
+  background: rgba(137, 180, 250, 0.1);
+}
+
+.file-manager-content-scroll {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 8px;
+}
+
+.file-manager-content {
+  height: 100%;
+}
+
+.folder-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+  gap: 8px;
+}
+
+.folder-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: rgba(49, 50, 68, 0.3);
+}
+
+.folder-item:hover {
+  background: rgba(137, 180, 250, 0.2);
+  transform: translateY(-1px);
+}
+
+.folder-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+  font-size: 10px;
+}
+
+.folder-name {
+  font-size: 7px;
+  color: #cdd6f4;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.1;
+  margin-bottom: 2px;
+}
+
+.folder-info {
+  font-size: 6px;
+  color: #a6adc8;
+  text-align: center;
+}
+
+.file-manager-footer {
+  padding: 4px 8px;
+  border-top: 1px solid rgba(205, 214, 244, 0.1);
+  background: rgba(49, 50, 68, 0.6);
+  height: 20px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.status-info {
+  font-size: 7px;
+  color: #a6adc8;
 }
 
 .file-manager-header {
