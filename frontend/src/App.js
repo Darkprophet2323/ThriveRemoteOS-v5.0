@@ -1169,14 +1169,11 @@ const App = () => {
       {/* Desktop Background */}
       <div className="desktop-background"></div>
 
-      {/* ThriveRemoteOS Logo */}
-      <div className="desktop-logo">
-        <div className="logo-container">
-          <div className="logo-icon">🏔️</div>
-          <div className="logo-text">
-            <div className="logo-title">ThriveRemoteOS</div>
-            <div className="logo-version">Distro V.5.01</div>
-          </div>
+      {/* News Ticker */}
+      <div className="news-ticker">
+        <div className="ticker-content">
+          <span className="ticker-icon">📰</span>
+          <span className="ticker-text">{newsItems[currentNewsIndex]}</span>
         </div>
       </div>
 
