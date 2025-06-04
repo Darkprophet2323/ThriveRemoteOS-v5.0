@@ -155,8 +155,8 @@ const App = () => {
       w.id === windowId ? { 
         ...w, 
         maximized: !w.maximized,
-        position: w.maximized ? { x: 100, y: 80 } : { x: 0, y: 0 },
-        size: w.maximized ? { width: 1000, height: 700 } : { width: window.innerWidth, height: window.innerHeight - 50 }
+        position: w.maximized ? { x: 50, y: 40 } : { x: 0, y: 0 },
+        size: w.maximized ? { width: 500, height: 350 } : { width: window.innerWidth, height: window.innerHeight - 50 }
       } : w
     ));
   };
