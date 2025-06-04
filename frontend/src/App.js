@@ -57,7 +57,10 @@ const App = () => {
     return () => clearInterval(newsTimer);
   }, [newsItems.length]);
 
-  // Enhanced Desktop Applications with more categories
+  // Calculate tip amount
+  useEffect(() => {
+    setTipAmount((billAmount * tipPercentage) / 100);
+  }, [billAmount, tipPercentage]);
   const desktopApplications = [
     { id: 'jobs', name: 'Job Hunter', icon: '💼', category: 'productivity', description: 'AI-powered job search & applications' },
     { id: 'ai-tools', name: 'AI Assistant Hub', icon: '🤖', category: 'productivity', description: 'AI-powered productivity tools' },
