@@ -1526,20 +1526,119 @@ body, html {
   font-size: 18px;
   font-weight: 600;
 }
+/* === APPLICATIONS MENU === */
 .applications-menu {
   position: fixed;
-  bottom: 60px;
-  left: 20px;
-  width: 400px;
-  max-height: 500px;
-  background: rgba(17, 17, 27, 0.95);
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 320px;
+  height: 400px;
+  background: rgba(17, 17, 27, 0.98);
   border: 1px solid rgba(205, 214, 244, 0.2);
-  border-radius: 12px;
-  backdrop-filter: blur(20px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-  z-index: 1000;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  z-index: 1500;
+  display: flex;
+  flex-direction: column;
+  contain: layout style paint;
+  backface-visibility: hidden;
+}
+
+.menu-header {
+  padding: 8px 12px;
+  border-bottom: 1px solid rgba(205, 214, 244, 0.1);
+  background: rgba(49, 50, 68, 0.6);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 30px;
+  flex-shrink: 0;
+}
+
+.menu-header h3 {
+  font-size: 12px;
+  font-weight: 600;
+  color: #89b4fa;
+  margin: 0;
+}
+
+.menu-close {
+  width: 16px;
+  height: 16px;
+  border: none;
+  background: transparent;
+  color: #a6adc8;
+  cursor: pointer;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  transition: all 0.2s ease;
+}
+
+.menu-close:hover {
+  background: rgba(243, 139, 168, 0.2);
+  color: #f38ba8;
+}
+
+.menu-categories-scroll {
+  flex: 1;
   overflow-y: auto;
-  animation: menu-appear 0.2s ease-out;
+  overflow-x: hidden;
+  padding: 8px;
+}
+
+.menu-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.category-section h4 {
+  font-size: 10px;
+  color: #89b4fa;
+  margin: 0 0 6px 0;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.app-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.menu-app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: rgba(49, 50, 68, 0.3);
+}
+
+.menu-app:hover {
+  background: rgba(137, 180, 250, 0.2);
+  transform: translateY(-1px);
+}
+
+.menu-app .app-icon {
+  font-size: 10px;
+  margin-bottom: 3px;
+}
+
+.menu-app .app-name {
+  font-size: 6px;
+  color: #cdd6f4;
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: center;
 }
 
 @keyframes menu-appear {
