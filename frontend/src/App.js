@@ -1258,6 +1258,13 @@ const App = () => {
         </div>
       </div>
 
+      {/* Refresh Warning Button */}
+      <div className="refresh-warning">
+        <button className="refresh-btn" onClick={() => window.location.reload()}>
+          ⚠️ Warning: Refresh me - Click Here - If windows get stuck
+        </button>
+      </div>
+
       {/* Desktop Widgets */}
       <div className="clock-widget desktop-widget">
         <div className="time-display">{currentTime.toLocaleTimeString()}</div>
