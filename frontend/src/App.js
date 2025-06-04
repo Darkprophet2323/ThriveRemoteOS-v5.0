@@ -688,19 +688,26 @@ const App = () => {
   const NetworkTools = () => (
     <div className="application-content">
       <div className="content-header">
-        <h2>🗺️ Travel & Navigation Tools</h2>
+        <h2>🗺️ Journey Planning & Navigation</h2>
         <div className="quick-actions">
           <button className="action-btn" onClick={() => window.open('https://makemydrivefun.com', '_blank')}>
             🚗 Plan Fun Drive
           </button>
-          <button className="action-btn" onClick={() => window.open('https://speedtest.net/', '_blank')}>
-            ⚡ Test Speed
+          <button className="action-btn" onClick={() => window.open('https://maps.google.com/', '_blank')}>
+            🗺️ Google Maps
           </button>
         </div>
       </div>
       
       <div className="link-section">
         <div className="link-grid">
+          <a href="https://maps.google.com/" target="_blank" rel="noopener noreferrer" className="app-link featured">
+            <div className="link-icon">🗺️</div>
+            <div className="link-details">
+              <div className="link-title">Google Maps ⭐ ESSENTIAL</div>
+              <div className="link-desc">World's most comprehensive mapping and navigation</div>
+            </div>
+          </a>
           <a href="https://makemydrivefun.com" target="_blank" rel="noopener noreferrer" className="app-link featured">
             <div className="link-icon">🚗</div>
             <div className="link-details">
@@ -709,31 +716,124 @@ const App = () => {
             </div>
           </a>
           <a href="https://waze.com/" target="_blank" rel="noopener noreferrer" className="app-link">
-            <div className="link-icon">🗺️</div>
+            <div className="link-icon">🚧</div>
             <div className="link-details">
               <div className="link-title">Waze</div>
               <div className="link-desc">Community-driven navigation with real-time traffic</div>
             </div>
           </a>
-          <a href="https://maps.google.com/" target="_blank" rel="noopener noreferrer" className="app-link">
-            <div className="link-icon">📍</div>
+          <a href="https://maps.apple.com/" target="_blank" rel="noopener noreferrer" className="app-link">
+            <div className="link-icon">🍎</div>
             <div className="link-details">
-              <div className="link-title">Google Maps</div>
-              <div className="link-desc">Universal navigation & business discovery</div>
+              <div className="link-title">Apple Maps</div>
+              <div className="link-desc">Apple's mapping service with detailed transit info</div>
             </div>
           </a>
-          <a href="https://gasbuddy.com/" target="_blank" rel="noopener noreferrer" className="app-link">
-            <div className="link-icon">⛽</div>
+          <a href="https://www.mapquest.com/" target="_blank" rel="noopener noreferrer" className="app-link">
+            <div className="link-icon">🧭</div>
             <div className="link-details">
-              <div className="link-title">GasBuddy</div>
-              <div className="link-desc">Find cheapest gas prices on your route</div>
+              <div className="link-title">MapQuest</div>
+              <div className="link-desc">Turn-by-turn directions and route planning</div>
+            </div>
+          </a>
+          <a href="https://here.com/" target="_blank" rel="noopener noreferrer" className="app-link">
+            <div className="link-icon">📍</div>
+            <div className="link-details">
+              <div className="link-title">HERE Maps</div>
+              <div className="link-desc">Professional mapping with offline capabilities</div>
             </div>
           </a>
         </div>
       </div>
 
       <div className="content-header">
-        <h2>📡 Network Diagnostics & Tools</h2>
+        <h2>✈️ Travel Planning & Booking</h2>
+      </div>
+      <div className="link-section">
+        <div className="link-grid">
+          <a href="https://www.kayak.com/" target="_blank" rel="noopener noreferrer" className="app-link featured">
+            <div className="link-icon">✈️</div>
+            <div className="link-details">
+              <div className="link-title">Kayak ⭐ TRAVEL SEARCH</div>
+              <div className="link-desc">Compare flights, hotels, and car rentals</div>
+            </div>
+          </a>
+          <a href="https://www.expedia.com/" target="_blank" rel="noopener noreferrer" className="app-link">
+            <div className="link-icon">🏨</div>
+            <div className="link-details">
+              <div className="link-title">Expedia</div>
+              <div className="link-desc">Complete travel booking platform</div>
+            </div>
+          </a>
+          <a href="https://www.skyscanner.com/" target="_blank" rel="noopener noreferrer" className="app-link">
+            <div className="link-icon">🔍</div>
+            <div className="link-details">
+              <div className="link-title">Skyscanner</div>
+              <div className="link-desc">Flight comparison and booking engine</div>
+            </div>
+          </a>
+          <a href="https://www.booking.com/" target="_blank" rel="noopener noreferrer" className="app-link">
+            <div className="link-icon">🏠</div>
+            <div className="link-details">
+              <div className="link-title">Booking.com</div>
+              <div className="link-desc">Global accommodation booking platform</div>
+            </div>
+          </a>
+          <a href="https://www.airbnb.com/" target="_blank" rel="noopener noreferrer" className="app-link">
+            <div className="link-icon">🏡</div>
+            <div className="link-details">
+              <div className="link-title">Airbnb</div>
+              <div className="link-desc">Unique stays and travel experiences</div>
+            </div>
+          </a>
+          <a href="https://www.tripadvisor.com/" target="_blank" rel="noopener noreferrer" className="app-link">
+            <div className="link-icon">⭐</div>
+            <div className="link-details">
+              <div className="link-title">TripAdvisor</div>
+              <div className="link-desc">Travel reviews and recommendations</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div className="content-header">
+        <h2>⛽ Road Trip Essentials</h2>
+      </div>
+      <div className="link-section">
+        <div className="link-grid">
+          <a href="https://gasbuddy.com/" target="_blank" rel="noopener noreferrer" className="app-link featured">
+            <div className="link-icon">⛽</div>
+            <div className="link-details">
+              <div className="link-title">GasBuddy ⭐ ESSENTIAL</div>
+              <div className="link-desc">Find cheapest gas prices on your route</div>
+            </div>
+          </a>
+          <a href="https://www.roadtrippers.com/" target="_blank" rel="noopener noreferrer" className="app-link">
+            <div className="link-icon">🛣️</div>
+            <div className="link-details">
+              <div className="link-title">Roadtrippers</div>
+              <div className="link-desc">Discover amazing places along your route</div>
+            </div>
+          </a>
+          <a href="https://www.aaa.com/triptik/" target="_blank" rel="noopener noreferrer" className="app-link">
+            <div className="link-icon">🗺️</div>
+            <div className="link-details">
+              <div className="link-title">AAA TripTik</div>
+              <div className="link-desc">Professional trip planning with roadside assistance</div>
+            </div>
+          </a>
+          <a href="https://www.yelp.com/" target="_blank" rel="noopener noreferrer" className="app-link">
+            <div className="link-icon">🍴</div>
+            <div className="link-details">
+              <div className="link-title">Yelp</div>
+              <div className="link-desc">Find restaurants and services along your route</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div className="content-header">
+        <h2>📡 Network & Connectivity Tools</h2>
       </div>
       <div className="link-section">
         <div className="link-grid">
