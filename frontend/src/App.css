@@ -568,6 +568,12 @@ body, html {
   gap: 8px;
 }
 
+.folder-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
 .folder-item {
   display: flex;
   flex-direction: column;
@@ -577,6 +583,13 @@ body, html {
   cursor: pointer;
   transition: all 0.2s ease;
   background: rgba(49, 50, 68, 0.3);
+}
+
+.folder-item.list {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
 }
 
 .folder-item:hover {
@@ -593,6 +606,22 @@ body, html {
   justify-content: center;
   margin-bottom: 4px;
   font-size: 10px;
+  flex-shrink: 0;
+}
+
+.folder-item.list .folder-icon {
+  margin-bottom: 0;
+}
+
+.folder-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.folder-item.list .folder-details {
+  align-items: flex-start;
 }
 
 .folder-name {
@@ -604,10 +633,20 @@ body, html {
   margin-bottom: 2px;
 }
 
+.folder-item.list .folder-name {
+  font-size: 8px;
+  text-align: left;
+}
+
 .folder-info {
   font-size: 6px;
   color: #a6adc8;
   text-align: center;
+}
+
+.folder-item.list .folder-info {
+  font-size: 6px;
+  text-align: left;
 }
 
 .file-manager-footer {
