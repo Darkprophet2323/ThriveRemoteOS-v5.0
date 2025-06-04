@@ -164,21 +164,29 @@ const App = () => {
     ));
   };
 
-  // Enhanced window dragging with Raspberry Pi-style behavior
+  // Enhanced window management with scalability and selection
   const [dragging, setDragging] = useState(null);
+  const [resizing, setResizing] = useState(null);
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
-  const [windowBuffer, setWindowBuffer] = useState({});
+
+  const bringToFront = (windowId) => {
+    const maxZ = Math.max(...activeWindows.map(w => w.zIndex), 1000);
+    setActiveWindows(prev => prev.map(w => 
+      w.id === windowId ? { ...w, zIndex: maxZ + 1 } : w
+    ));
+  };
+
+  const handleWindowClick = (e, windowId) => {
+    e.stopPropagation();
+    bringToFront(windowId);
+  };
 
   const handleMouseDown = (e, windowId) => {
     e.preventDefault();
     e.stopPropagation();
     const window = activeWindows.find(w => w.id === windowId);
     if (window && !window.maximized) {
-      // Bring window to front
-      setActiveWindows(prev => prev.map(w => 
-        w.id === windowId ? { ...w, zIndex: Math.max(...prev.map(win => win.zIndex)) + 1 } : w
-      ));
-      
+      bringToFront(windowId);
       setDragging(windowId);
       setDragOffset({
         x: e.clientX - window.position.x,
@@ -187,11 +195,18 @@ const App = () => {
     }
   };
 
+  const handleResizeStart = (e, windowId) => {
+    e.preventDefault();
+    e.stopPropagation();
+    bringToFront(windowId);
+    setResizing(windowId);
+  };
+
   const handleMouseMove = React.useCallback((e) => {
     if (dragging) {
       e.preventDefault();
       const newX = Math.max(0, Math.min(e.clientX - dragOffset.x, window.innerWidth - 200));
-      const newY = Math.max(40, Math.min(e.clientY - dragOffset.y, window.innerHeight - 100));
+      const newY = Math.max(90, Math.min(e.clientY - dragOffset.y, window.innerHeight - 100));
       
       setActiveWindows(prev => prev.map(w => 
         w.id === dragging ? {
@@ -200,19 +215,35 @@ const App = () => {
         } : w
       ));
     }
-  }, [dragging, dragOffset]);
+    
+    if (resizing) {
+      e.preventDefault();
+      const window = activeWindows.find(w => w.id === resizing);
+      if (window) {
+        const newWidth = Math.max(250, e.clientX - window.position.x);
+        const newHeight = Math.max(150, e.clientY - window.position.y);
+        
+        setActiveWindows(prev => prev.map(w => 
+          w.id === resizing ? {
+            ...w,
+            size: { width: newWidth, height: newHeight }
+          } : w
+        ));
+      }
+    }
+  }, [dragging, resizing, dragOffset]);
 
   const handleMouseUp = React.useCallback(() => {
     setDragging(null);
+    setResizing(null);
   }, []);
 
-  // Enhanced event listeners with better performance
   useEffect(() => {
-    if (dragging) {
+    if (dragging || resizing) {
       document.addEventListener('mousemove', handleMouseMove, { passive: false });
       document.addEventListener('mouseup', handleMouseUp, { passive: true });
       document.body.style.userSelect = 'none';
-      document.body.style.cursor = 'move';
+      document.body.style.cursor = dragging ? 'move' : 'se-resize';
     } else {
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseup', handleMouseUp);
@@ -226,7 +257,7 @@ const App = () => {
       document.body.style.userSelect = '';
       document.body.style.cursor = '';
     };
-  }, [dragging, handleMouseMove, handleMouseUp]);
+  }, [dragging, resizing, handleMouseMove, handleMouseUp]);
 
   // ENHANCED CONTENT COMPONENTS
 
