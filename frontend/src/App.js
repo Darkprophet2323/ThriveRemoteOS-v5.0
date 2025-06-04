@@ -1270,7 +1270,7 @@ const App = () => {
         <div className="weather-desc">Partly Cloudy</div>
       </div>
 
-      {/* Four Primary Desktop Shortcuts - Left Aligned */}
+      {/* All Desktop Shortcuts - Left Aligned */}
       <div className="primary-desktop-shortcuts">
         <div className="desktop-shortcut" onClick={() => openApplication('jobs', 'Job Hunter')}>
           <div className="shortcut-icon">💼</div>
@@ -1288,10 +1288,6 @@ const App = () => {
           <div className="shortcut-icon">🧮</div>
           <div className="shortcut-label">Waitress Tools</div>
         </div>
-      </div>
-
-      {/* Secondary Desktop Shortcuts - Right Aligned */}
-      <div className="desktop-shortcuts">
         <div className="desktop-shortcut" onClick={() => openApplication('music', 'Music Player')}>
           <div className="shortcut-icon">🎵</div>
           <div className="shortcut-label">Music Player</div>
