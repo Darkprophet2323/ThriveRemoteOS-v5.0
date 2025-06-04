@@ -1398,9 +1398,6 @@ const App = () => {
       {/* Applications Menu */}
       {showApplications && <ApplicationsMenu />}
 
-      {/* Quick Access Panel */}
-      {showQuickPanel && <QuickAccessPanel />}
-
       {/* Taskbar */}
       <div className="kde-taskbar">
         <div className="taskbar-left">
