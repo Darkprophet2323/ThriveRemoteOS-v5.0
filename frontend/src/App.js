@@ -1145,7 +1145,7 @@ const App = () => {
     }
   };
 
-  const FileManager = () => (
+  const FileManager = React.memo(() => (
     <div className="file-manager">
       <div className="file-manager-header">
         <div className="path-bar">
@@ -1158,17 +1158,19 @@ const App = () => {
           <button className="view-btn">List</button>
         </div>
       </div>
-      <div className="file-manager-content">
-        <div className="folder-grid">
-          {fileManagerFolders.map((folder, index) => (
-            <div key={index} className="folder-item" onClick={folder.onClick}>
-              <div className="folder-icon" style={{ backgroundColor: folder.color }}>
-                <span>{folder.icon}</span>
+      <div className="file-manager-content-scroll">
+        <div className="file-manager-content">
+          <div className="folder-grid">
+            {fileManagerFolders.map((folder, index) => (
+              <div key={index} className="folder-item" onClick={folder.onClick}>
+                <div className="folder-icon" style={{ backgroundColor: folder.color }}>
+                  <span>{folder.icon}</span>
+                </div>
+                <div className="folder-name">{folder.name}</div>
+                <div className="folder-info">{folder.items} items</div>
               </div>
-              <div className="folder-name">{folder.name}</div>
-              <div className="folder-info">{folder.items} items</div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
       <div className="file-manager-footer">
@@ -1177,7 +1179,7 @@ const App = () => {
         </div>
       </div>
     </div>
-  );
+  ));
 
   // Quick Access Panel Component (Optimized to prevent excessive re-renders)
   const QuickAccessPanel = React.memo(() => {
