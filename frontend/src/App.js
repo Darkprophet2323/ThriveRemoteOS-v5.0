@@ -1326,6 +1326,7 @@ const App = () => {
           <div className="window-content">
             {window.id === 'files' ? <FileManager /> : renderApplicationContent(window.app)}
           </div>
+          <div className="window-resize-handle"></div>
         </div>
       ))}
 
