@@ -1043,6 +1043,48 @@ const App = () => {
               </div>
             </div>
             <div className="category-section">
+              <h4>Education</h4>
+              <div className="app-grid">
+                {desktopApplications.filter(app => app.category === 'education').map(app => (
+                  <div key={app.id} className="menu-app" onClick={() => {
+                    openApplication(app.id, app.name);
+                    setShowApplications(false);
+                  }}>
+                    <div className="app-icon">{app.icon}</div>
+                    <div className="app-name">{app.name}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="category-section">
+              <h4>Utilities</h4>
+              <div className="app-grid">
+                {desktopApplications.filter(app => app.category === 'utility').map(app => (
+                  <div key={app.id} className="menu-app" onClick={() => {
+                    openApplication(app.id, app.name);
+                    setShowApplications(false);
+                  }}>
+                    <div className="app-icon">{app.icon}</div>
+                    <div className="app-name">{app.name}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="category-section">
+              <h4>Internet</h4>
+              <div className="app-grid">
+                {desktopApplications.filter(app => app.category === 'internet').map(app => (
+                  <div key={app.id} className="menu-app" onClick={() => {
+                    openApplication(app.id, app.name);
+                    setShowApplications(false);
+                  }}>
+                    <div className="app-icon">{app.icon}</div>
+                    <div className="app-name">{app.name}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="category-section">
               <h4>System</h4>
               <div className="app-grid">
                 {desktopApplications.filter(app => app.category === 'system').map(app => (
