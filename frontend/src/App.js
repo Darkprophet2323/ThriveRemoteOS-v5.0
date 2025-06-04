@@ -591,6 +591,42 @@ const App = () => {
           </a>
         </div>
       </div>
+
+      <div className="content-header">
+        <h3>🛍️ Restaurant Supplies & Uniforms</h3>
+      </div>
+      <div className="link-section">
+        <div className="link-grid">
+          <a href="https://chefwear.com/" target="_blank" rel="noopener noreferrer" className="app-link">
+            <div className="link-icon">👔</div>
+            <div className="link-details">
+              <div className="link-title">Chefwear</div>
+              <div className="link-desc">Professional chef and server uniforms</div>
+            </div>
+          </a>
+          <a href="https://uniformadvantage.com/" target="_blank" rel="noopener noreferrer" className="app-link">
+            <div className="link-icon">👗</div>
+            <div className="link-details">
+              <div className="link-title">Uniform Advantage</div>
+              <div className="link-desc">Restaurant and hospitality uniforms</div>
+            </div>
+          </a>
+          <a href="https://shoestation.com/restaurant-shoes" target="_blank" rel="noopener noreferrer" className="app-link">
+            <div className="link-icon">👟</div>
+            <div className="link-details">
+              <div className="link-title">Non-Slip Shoes</div>
+              <div className="link-desc">Professional restaurant footwear</div>
+            </div>
+          </a>
+          <a href="https://amazon.com/s?k=waiter+supplies" target="_blank" rel="noopener noreferrer" className="app-link">
+            <div className="link-icon">🛒</div>
+            <div className="link-details">
+              <div className="link-title">Server Supplies</div>
+              <div className="link-desc">Wine keys, order pads, aprons, accessories</div>
+            </div>
+          </a>
+        </div>
+      </div>
     </div>
   );
 
