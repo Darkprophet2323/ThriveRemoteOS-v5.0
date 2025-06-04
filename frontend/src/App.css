@@ -557,66 +557,76 @@ body, html {
   overflow-y: auto;
   overflow-x: hidden;
   padding: 8px;
-  height: calc(100% - 50px); /* Account for header and footer */
-  min-height: 200px; /* Ensure minimum height for scrolling */
+  height: calc(100% - 50px);
+  max-height: 250px; /* Force scrollbar to appear */
+  border: 1px solid rgba(205, 214, 244, 0.1); /* Visual boundary */
 }
 
 .file-manager-content {
   min-height: 100%;
 }
 
-/* Force scrollable content with many items */
+/* Grid View */
 .folder-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
   gap: 8px;
-  min-height: 300px; /* Force height to enable scrolling */
+  padding: 4px;
 }
 
+/* List View */
 .folder-list {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  min-height: 400px; /* Force height for list view scrolling */
+  gap: 2px;
+  padding: 4px;
 }
 
+/* Folder Items */
 .folder-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 6px;
-  border-radius: 3px;
+  padding: 8px;
+  border-radius: 4px;
   cursor: pointer;
   transition: all 0.2s ease;
   background: rgba(49, 50, 68, 0.3);
+  border: 1px solid transparent;
 }
 
+/* List view specific styling */
 .folder-item.list {
   flex-direction: row;
   align-items: center;
-  gap: 8px;
-  padding: 4px 8px;
+  gap: 12px;
+  padding: 6px 12px;
+  border-radius: 4px;
 }
 
 .folder-item:hover {
   background: rgba(137, 180, 250, 0.2);
+  border-color: rgba(137, 180, 250, 0.3);
   transform: translateY(-1px);
 }
 
 .folder-icon {
-  width: 24px;
-  height: 24px;
-  border-radius: 3px;
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 4px;
-  font-size: 10px;
+  margin-bottom: 6px;
+  font-size: 12px;
   flex-shrink: 0;
 }
 
 .folder-item.list .folder-icon {
   margin-bottom: 0;
+  width: 24px;
+  height: 24px;
+  font-size: 10px;
 }
 
 .folder-details {
@@ -624,35 +634,36 @@ body, html {
   flex-direction: column;
   align-items: center;
   flex: 1;
+  text-align: center;
 }
 
 .folder-item.list .folder-details {
   align-items: flex-start;
+  text-align: left;
 }
 
 .folder-name {
-  font-size: 7px;
+  font-size: 8px;
   color: #cdd6f4;
-  font-weight: 500;
-  text-align: center;
-  line-height: 1.1;
+  font-weight: 600;
+  line-height: 1.2;
   margin-bottom: 2px;
+  word-break: break-word;
 }
 
 .folder-item.list .folder-name {
-  font-size: 8px;
-  text-align: left;
+  font-size: 9px;
+  margin-bottom: 1px;
 }
 
 .folder-info {
   font-size: 6px;
   color: #a6adc8;
-  text-align: center;
+  font-weight: 400;
 }
 
 .folder-item.list .folder-info {
-  font-size: 6px;
-  text-align: left;
+  font-size: 7px;
 }
 
 .file-manager-footer {
