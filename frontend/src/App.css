@@ -496,6 +496,7 @@ body, html {
   display: flex;
   flex-direction: column;
   background: rgba(30, 30, 46, 0.98);
+  overflow: hidden; /* Prevent parent scrolling */
 }
 
 .file-manager-header {
