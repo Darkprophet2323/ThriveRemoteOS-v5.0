@@ -1359,7 +1359,15 @@ const App = () => {
       { name: 'Task Management', icon: '📋', color: '#34495e', items: 6, onClick: () => openApplication('tasks', 'Task Planner') },
       { name: 'Career Development', icon: '📊', color: '#95a5a6', items: 12, onClick: () => openApplication('career', 'Career Tools') },
       { name: 'Remote Workspace', icon: '🏢', color: '#16a085', items: 7, onClick: () => openApplication('workspace', 'Remote Workspace') },
-      { name: 'System Files', icon: '⚙️', color: '#7f8c8d', items: 23, onClick: () => openApplication('settings', 'System Settings') }
+      { name: 'System Files', icon: '⚙️', color: '#7f8c8d', items: 23, onClick: () => openApplication('settings', 'System Settings') },
+      { name: 'Documents', icon: '📄', color: '#c0392b', items: 45, onClick: () => openApplication('docs', 'Documents') },
+      { name: 'Downloads', icon: '⬇️', color: '#8e44ad', items: 78, onClick: () => openApplication('downloads', 'Downloads') },
+      { name: 'Pictures', icon: '🖼️', color: '#f39c12', items: 134, onClick: () => openApplication('pictures', 'Pictures') },
+      { name: 'Videos', icon: '🎬', color: '#e74c3c', items: 56, onClick: () => openApplication('videos', 'Videos') },
+      { name: 'Code Projects', icon: '💻', color: '#27ae60', items: 89, onClick: () => openApplication('code', 'Code Projects') },
+      { name: 'Backups', icon: '💾', color: '#34495e', items: 23, onClick: () => openApplication('backups', 'Backups') },
+      { name: 'Templates', icon: '📑', color: '#9b59b6', items: 67, onClick: () => openApplication('templates', 'Templates') },
+      { name: 'Archive', icon: '📦', color: '#95a5a6', items: 145, onClick: () => openApplication('archive', 'Archive') }
     ];
 
     return (
