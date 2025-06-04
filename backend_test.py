@@ -248,7 +248,8 @@ class ThriveRemoteAPITester:
             "POST",
             "api/savings/update",
             200,
-            data={"amount": 1000}
+            data={"amount": 1000},
+            params={"amount": 1000}
         )
         if success:
             print(f"New amount: ${response.get('new_amount')}")
