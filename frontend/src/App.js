@@ -1343,7 +1343,7 @@ const App = () => {
     }
   };
 
-  // Enhanced File Manager with proper functionality
+  // Enhanced File Manager with in-house advertisements and more content
   const FileManager = React.memo(() => {
     const [viewMode, setViewMode] = useState('grid');
     
@@ -1372,7 +1372,51 @@ const App = () => {
       { name: 'Code Projects', icon: '💻', color: '#27ae60', items: 89, onClick: () => openApplication('code', 'Code Projects') },
       { name: 'Backups', icon: '💾', color: '#34495e', items: 23, onClick: () => openApplication('backups', 'Backups') },
       { name: 'Templates', icon: '📑', color: '#9b59b6', items: 67, onClick: () => openApplication('templates', 'Templates') },
-      { name: 'Archive', icon: '📦', color: '#95a5a6', items: 145, onClick: () => openApplication('archive', 'Archive') }
+      { name: 'Archive', icon: '📦', color: '#95a5a6', items: 145, onClick: () => openApplication('archive', 'Archive') },
+      { name: 'Graphics', icon: '🎨', color: '#e91e63', items: 234, onClick: () => openApplication('graphics', 'Graphics') },
+      { name: 'Audio Files', icon: '🔊', color: '#ff5722', items: 567, onClick: () => openApplication('audio', 'Audio Files') },
+      { name: 'Web Projects', icon: '🌐', color: '#009688', items: 89, onClick: () => openApplication('web', 'Web Projects') },
+      { name: 'Database', icon: '🗄️', color: '#607d8b', items: 456, onClick: () => openApplication('database', 'Database') },
+      { name: 'Presentations', icon: '📊', color: '#ff9800', items: 78, onClick: () => openApplication('presentations', 'Presentations') },
+      { name: 'Spreadsheets', icon: '📈', color: '#4caf50', items: 123, onClick: () => openApplication('spreadsheets', 'Spreadsheets') },
+      { name: 'Configuration', icon: '⚙️', color: '#9e9e9e', items: 345, onClick: () => openApplication('config', 'Configuration') },
+      { name: 'Logs', icon: '📝', color: '#795548', items: 789, onClick: () => openApplication('logs', 'Logs') },
+      { name: 'Utilities', icon: '🛠️', color: '#3f51b5', items: 567, onClick: () => openApplication('utilities', 'Utilities') },
+      { name: 'Games', icon: '🎮', color: '#e91e63', items: 45, onClick: () => openApplication('games', 'Games') }
+    ];
+
+    // In-house advertisements
+    const inHouseAds = [
+      {
+        id: 'relocation-ad',
+        type: 'relocation',
+        title: '🏔️ ThriveRemote Relocation Services',
+        subtitle: 'Phoenix → Peak District Migration Experts',
+        description: 'Complete relocation package: Visa assistance, property search, moving logistics, and integration support.',
+        cta: 'Start Your Journey',
+        color: '#2ecc71',
+        onClick: () => openApplication('relocation', 'Relocation Helper')
+      },
+      {
+        id: 'hiring-ad',
+        type: 'hiring',
+        title: '💼 ThriveRemote Talent Solutions',
+        subtitle: 'Remote Work Recruitment & AI-Powered Matching',
+        description: 'Connect with top remote talent. AI-powered job matching for employers and job seekers.',
+        cta: 'Hire Remote Talent',
+        color: '#3498db',
+        onClick: () => openApplication('jobs', 'Job Hunter')
+      },
+      {
+        id: 'training-ad',
+        type: 'training',
+        title: '🧮 Professional Training Hub',
+        subtitle: 'Waitress & Hospitality Career Development',
+        description: 'ServSafe certification, tip optimization, restaurant job placement, and career advancement.',
+        cta: 'Boost Your Career',
+        color: '#e67e22',
+        onClick: () => openApplication('waitress-tools', 'Waitress Toolkit')
+      }
     ];
 
     console.log(`File Manager: Current view mode is ${viewMode}, showing ${actualFileManagerFolders.length} folders`);
@@ -1402,18 +1446,66 @@ const App = () => {
         </div>
         <div className="file-manager-content-scroll">
           <div className="file-manager-content">
-            <div className={viewMode === 'grid' ? 'folder-grid' : 'folder-list'}>
-              {actualFileManagerFolders.map((folder, index) => (
-                <div key={index} className={`folder-item ${viewMode}`} onClick={folder.onClick}>
-                  <div className="folder-icon" style={{ backgroundColor: folder.color }}>
-                    <span>{folder.icon}</span>
+            {/* In-House Advertisements */}
+            <div className="ads-section">
+              <h4 className="ads-title">🚀 ThriveRemote Services</h4>
+              <div className="ads-grid">
+                {inHouseAds.map((ad) => (
+                  <div key={ad.id} className="in-house-ad" style={{ borderColor: ad.color }} onClick={ad.onClick}>
+                    <div className="ad-header" style={{ backgroundColor: ad.color + '20' }}>
+                      <div className="ad-title">{ad.title}</div>
+                      <div className="ad-subtitle">{ad.subtitle}</div>
+                    </div>
+                    <div className="ad-body">
+                      <div className="ad-description">{ad.description}</div>
+                      <button className="ad-cta" style={{ backgroundColor: ad.color }}>
+                        {ad.cta}
+                      </button>
+                    </div>
                   </div>
-                  <div className="folder-details">
-                    <div className="folder-name">{folder.name}</div>
-                    <div className="folder-info">{folder.items} items</div>
+                ))}
+              </div>
+            </div>
+
+            {/* File/Folder Content */}
+            <div className="folders-section">
+              <h4 className="folders-title">📁 System Folders</h4>
+              <div className={viewMode === 'grid' ? 'folder-grid' : 'folder-list'}>
+                {actualFileManagerFolders.map((folder, index) => (
+                  <div key={index} className={`folder-item ${viewMode}`} onClick={folder.onClick}>
+                    <div className="folder-icon" style={{ backgroundColor: folder.color }}>
+                      <span>{folder.icon}</span>
+                    </div>
+                    <div className="folder-details">
+                      <div className="folder-name">{folder.name}</div>
+                      <div className="folder-info">{folder.items} items</div>
+                    </div>
                   </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Additional Content for Scrolling */}
+            <div className="additional-content">
+              <h4 className="content-title">📊 Quick Stats</h4>
+              <div className="stats-grid">
+                <div className="stat-item">
+                  <div className="stat-number">2,847</div>
+                  <div className="stat-label">Total Files</div>
                 </div>
-              ))}
+                <div className="stat-item">
+                  <div className="stat-number">30</div>
+                  <div className="stat-label">Applications</div>
+                </div>
+                <div className="stat-item">
+                  <div className="stat-number">748 GB</div>
+                  <div className="stat-label">Storage Used</div>
+                </div>
+                <div className="stat-item">
+                  <div className="stat-number">15</div>
+                  <div className="stat-label">Active Projects</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
