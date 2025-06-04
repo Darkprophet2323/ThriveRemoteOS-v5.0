@@ -554,16 +554,154 @@ body, html {
 
 .file-manager-content-scroll {
   flex: 1;
-  overflow-y: auto;
+  overflow-y: scroll; /* Force scrollbar to always show */
   overflow-x: hidden;
   padding: 8px;
-  height: calc(100% - 50px);
-  max-height: 250px; /* Force scrollbar to appear */
-  border: 1px solid rgba(205, 214, 244, 0.1); /* Visual boundary */
+  height: 220px; /* Fixed height to ensure scrolling */
+  border: 1px solid rgba(205, 214, 244, 0.1);
+  background: rgba(30, 30, 46, 0.95);
 }
 
 .file-manager-content {
-  min-height: 100%;
+  min-height: 800px; /* Force content to be taller than container */
+  padding-bottom: 20px;
+}
+
+/* Advertisements Section */
+.ads-section {
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid rgba(137, 180, 250, 0.2);
+}
+
+.ads-title {
+  font-size: 10px;
+  color: #89b4fa;
+  font-weight: 600;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.ads-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+.in-house-ad {
+  background: rgba(49, 50, 68, 0.6);
+  border: 2px solid;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.in-house-ad:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.ad-header {
+  padding: 8px;
+  border-bottom: 1px solid rgba(205, 214, 244, 0.1);
+}
+
+.ad-title {
+  font-size: 8px;
+  font-weight: 700;
+  color: #cdd6f4;
+  margin-bottom: 2px;
+}
+
+.ad-subtitle {
+  font-size: 6px;
+  color: #a6adc8;
+  font-weight: 500;
+}
+
+.ad-body {
+  padding: 8px;
+}
+
+.ad-description {
+  font-size: 6px;
+  color: #cdd6f4;
+  line-height: 1.3;
+  margin-bottom: 6px;
+}
+
+.ad-cta {
+  background: #89b4fa;
+  color: #1e1e2e;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 3px;
+  font-size: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.ad-cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Folders Section */
+.folders-section {
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(205, 214, 244, 0.1);
+}
+
+.folders-title {
+  font-size: 10px;
+  color: #89b4fa;
+  font-weight: 600;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+/* Additional Content Section */
+.additional-content {
+  margin-bottom: 20px;
+}
+
+.content-title {
+  font-size: 10px;
+  color: #89b4fa;
+  font-weight: 600;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.stat-item {
+  background: rgba(49, 50, 68, 0.4);
+  border: 1px solid rgba(205, 214, 244, 0.1);
+  border-radius: 4px;
+  padding: 8px;
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 10px;
+  font-weight: 700;
+  color: #94e2d5;
+  margin-bottom: 2px;
+}
+
+.stat-label {
+  font-size: 6px;
+  color: #a6adc8;
+  font-weight: 500;
 }
 
 /* Grid View */
