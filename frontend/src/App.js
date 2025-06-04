@@ -4,14 +4,10 @@ import './App.css';
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8001';
 
 const App = () => {
-  // System state
-  const [systemInitialized, setSystemInitialized] = useState(false);
-  const [matrixLoading, setMatrixLoading] = useState(true);
-  const [loadingProgress, setLoadingProgress] = useState(0);
-  const [loadingPhase, setLoadingPhase] = useState('INITIALIZING');
-  const [accessGranted, setAccessGranted] = useState(false);
+  // System state - simplified for fast loading
+  const [systemInitialized, setSystemInitialized] = useState(true); // Start initialized
   const [currentTheme, setCurrentTheme] = useState('cosmos');
-  const [networkConnected, setNetworkConnected] = useState(false);
+  const [networkConnected, setNetworkConnected] = useState(true);
   const [securityLevel, setSecurityLevel] = useState('QUANTUM');
 
   // Enhanced visual state
@@ -22,17 +18,8 @@ const App = () => {
   
   // Application state
   const [activeWindows, setActiveWindows] = useState([]);
-  const [jobs, setJobs] = useState([]);
-  const [applications, setApplications] = useState([]);
-  const [savings, setSavings] = useState(null);
-  const [tasks, setTasks] = useState([]);
-  const [dashboardStats, setDashboardStats] = useState(null);
-  const [achievements, setAchievements] = useState([]);
   const [notifications, setNotifications] = useState([]);
   const [currentTime, setCurrentTime] = useState(new Date());
-  const [dragging, setDragging] = useState(null);
-  const [backgroundIndex, setBackgroundIndex] = useState(0);
-  const [transparency, setTransparency] = useState(92);
   const [terminalAccess, setTerminalAccess] = useState(false);
   const [userStats, setUserStats] = useState({
     streakDays: 15,
@@ -90,93 +77,35 @@ const App = () => {
     }
   };
 
-  // Initialize star field for parallax effect
+  // Initialize star field for parallax effect - simplified for performance
   useEffect(() => {
-    const stars = Array.from({ length: 200 }, (_, i) => ({
+    const stars = Array.from({ length: 100 }, (_, i) => ({
       id: i,
       x: Math.random() * 100,
       y: Math.random() * 100,
-      size: Math.random() * 3 + 1,
-      speed: Math.random() * 0.5 + 0.1,
+      size: Math.random() * 2 + 1,
       brightness: Math.random(),
       color: Math.random() > 0.8 ? cinematicThemes[currentTheme].accent : '#ffffff'
     }));
     setStarField(stars);
   }, [currentTheme]);
 
-  // Animate star field and cosmic effects
+  // Simplified cosmic effects for better performance
   useEffect(() => {
     const interval = setInterval(() => {
       setColorPhase(prev => (prev + 0.02) % (Math.PI * 2));
       setPulseIntensity(prev => 0.3 + Math.sin(Date.now() * 0.003) * 0.2);
       setNebulaDrift(prev => prev + 0.1);
-      
-      setStarField(prev => prev.map(star => ({
-        ...star,
-        y: (star.y + star.speed) % 100,
-        brightness: 0.3 + Math.sin((Date.now() * 0.002) + star.id) * 0.7
-      })));
-    }, 50);
+    }, 100); // Less frequent updates
 
     return () => clearInterval(interval);
   }, []);
 
-  // Enhanced loading sequence with realistic progress
+  // Time update
   useEffect(() => {
-    if (matrixLoading) {
-      const phases = [
-        { phase: 'INITIALIZING QUANTUM PROTOCOLS', duration: 2000, progress: 15 },
-        { phase: 'ESTABLISHING COSMIC CONNECTIONS', duration: 2500, progress: 30 },
-        { phase: 'DECRYPTING NEURAL NETWORKS', duration: 3000, progress: 50 },
-        { phase: 'SYNCHRONIZING DIMENSIONAL DATA', duration: 2000, progress: 70 },
-        { phase: 'CALIBRATING MATRIX INTERFACE', duration: 2500, progress: 85 },
-        { phase: 'FINALIZING COSMIC DEPLOYMENT', duration: 2000, progress: 100 }
-      ];
-
-      let currentPhaseIndex = 0;
-      
-      const advancePhase = () => {
-        if (currentPhaseIndex < phases.length) {
-          const currentPhaseData = phases[currentPhaseIndex];
-          setLoadingPhase(currentPhaseData.phase);
-          
-          // Animate progress over phase duration
-          const startProgress = currentPhaseIndex === 0 ? 0 : phases[currentPhaseIndex - 1].progress;
-          const endProgress = currentPhaseData.progress;
-          const duration = currentPhaseData.duration;
-          const startTime = Date.now();
-          
-          const progressInterval = setInterval(() => {
-            const elapsed = Date.now() - startTime;
-            const progressRatio = Math.min(elapsed / duration, 1);
-            const currentProgress = startProgress + (endProgress - startProgress) * progressRatio;
-            setLoadingProgress(currentProgress);
-            
-            if (progressRatio >= 1) {
-              clearInterval(progressInterval);
-              currentPhaseIndex++;
-              setTimeout(advancePhase, 200);
-            }
-          }, 50);
-        } else {
-          setTimeout(() => {
-            setMatrixLoading(false);
-            setSystemInitialized(true);
-            setNetworkConnected(true);
-            setNotifications([{
-              id: 'cosmic_init',
-              type: 'quantum',
-              title: '🌌 COSMIC NETWORK INITIALIZED',
-              message: 'THRIVEREMOTE QUANTUM PORTAL ONLINE',
-              timestamp: new Date().toISOString()
-            }]);
-          }, 1000);
-        }
-      };
-      
-      advancePhase();
-    }
-  }, [matrixLoading]);
+    const timer = setInterval(() => setCurrentTime(new Date()), 1000);
+    return () => clearInterval(timer);
+  }, []);
 
   // Enhanced window management with cosmic effects
   const openWindow = (windowId, title, component, requiresAuth = false) => {
@@ -289,196 +218,783 @@ const App = () => {
 
   // Network portal applications with enhanced descriptions
   const portalApplications = [
-    { id: 'cosmic_scanner', name: 'Cosmic Network Scanner', icon: '🌌', component: 'CosmicScanner', classified: false, description: 'Scan multidimensional networks' },
-    { id: 'quantum_jobs', name: 'Quantum Job Portal', icon: '💫', component: 'QuantumJobs', classified: false, description: 'Discover remote opportunities across space-time' },
-    { id: 'dimensional_relocation', name: 'Dimensional Relocation', icon: '🌠', component: 'DimensionalRelocation', classified: false, description: 'Navigate Arizona→Peak District portal' },
-    { id: 'stellar_finance', name: 'Stellar Finance Tracker', icon: '⭐', component: 'StellarFinance', classified: false, description: 'Track resources across dimensions' },
-    { id: 'neural_tasks', name: 'Neural Task Matrix', icon: '🧠', component: 'NeuralTasks', classified: false, description: 'Organize thoughts and missions' },
-    { id: 'cosmic_learning', name: 'Cosmic Learning Hub', icon: '🚀', component: 'CosmicLearning', classified: false, description: 'Expand consciousness and skills' },
-    { id: 'quantum_terminal', name: 'Quantum Terminal', icon: '⚡', component: 'QuantumTerminal', classified: true, description: 'Direct neural interface access' },
-    { id: 'reality_analyzer', name: 'Reality Data Analyzer', icon: '🔮', component: 'RealityAnalyzer', classified: true, description: 'Analyze multidimensional data streams' },
-    { id: 'cosmic_games', name: 'Cosmic Entertainment', icon: '🎮', component: 'CosmicGames', classified: false, description: 'Mind-expanding experiences' },
-    { id: 'consciousness_vault', name: 'Consciousness Vault', icon: '🔐', component: 'ConsciousnessVault', classified: true, description: 'Secure neural configurations' },
-    { id: 'dimensional_achievements', name: 'Achievement Matrix', icon: '🏆', component: 'DimensionalAchievements', classified: false, description: 'Track consciousness evolution' },
-    { id: 'quantum_monitor', name: 'Quantum System Monitor', icon: '📡', component: 'QuantumMonitor', classified: true, description: 'Monitor dimensional stability' }
+    { id: 'quantum_jobs', name: 'Quantum Job Portal', icon: '💫', component: 'QuantumJobs', classified: false, description: 'AI-powered job search & applications' },
+    { id: 'cosmic_scanner', name: 'Cosmic Network Scanner', icon: '🌌', component: 'CosmicScanner', classified: false, description: 'Network analysis & speed testing' },
+    { id: 'dimensional_relocation', name: 'Dimensional Relocation', icon: '🌠', component: 'DimensionalRelocation', classified: false, description: 'Arizona→Peak District migration tools' },
+    { id: 'stellar_finance', name: 'Stellar Finance Tracker', icon: '⭐', component: 'StellarFinance', classified: false, description: 'Personal finance & investment tools' },
+    { id: 'neural_tasks', name: 'Neural Task Matrix', icon: '🧠', component: 'NeuralTasks', classified: false, description: 'Project management & productivity' },
+    { id: 'cosmic_learning', name: 'Cosmic Learning Hub', icon: '🚀', component: 'CosmicLearning', classified: false, description: 'Online courses & skill development' },
+    { id: 'remote_workspace', name: 'Remote Workspace Hub', icon: '🏢', component: 'RemoteWorkspace', classified: false, description: 'Coworking & virtual office tools' },
+    { id: 'career_optimizer', name: 'Career Optimization Engine', icon: '📊', component: 'CareerOptimizer', classified: false, description: 'Resume builders & interview prep' },
+    { id: 'quantum_terminal', name: 'Quantum Terminal', icon: '⚡', component: 'QuantumTerminal', classified: true, description: 'Advanced developer tools & API access' },
+    { id: 'reality_analyzer', name: 'Reality Data Analyzer', icon: '🔮', component: 'RealityAnalyzer', classified: true, description: 'Analytics & business intelligence' },
+    { id: 'consciousness_vault', name: 'Consciousness Vault', icon: '🔐', component: 'ConsciousnessVault', classified: true, description: 'Security & privacy tools' },
+    { id: 'quantum_monitor', name: 'Quantum System Monitor', icon: '📡', component: 'QuantumMonitor', classified: true, description: 'System monitoring & optimization' }
   ];
 
-  // Enhanced Matrix Loading Screen with realistic progress and better effects
-  const CosmicLoadingScreen = () => (
-    <div className="cosmic-loading">
-      {/* Animated star field background */}
-      <div className="star-field">
-        {starField.map(star => (
-          <div
-            key={star.id}
-            className="star"
-            style={{
-              left: `${star.x}%`,
-              top: `${star.y}%`,
-              width: `${star.size}px`,
-              height: `${star.size}px`,
-              opacity: star.brightness,
-              backgroundColor: star.color,
-              boxShadow: `0 0 ${star.size * 2}px ${star.color}`
-            }}
-          />
-        ))}
+  // COMPREHENSIVE HYPERLINK COMPONENTS WITH WORKING LINKS
+
+  const QuantumJobs = () => (
+    <div className="cosmic-interface">
+      <div className="cosmic-header">
+        <span className="cosmic-prompt">quantum@jobs:~$</span> scanning-interdimensional-opportunities --ai-powered
+      </div>
+      
+      <div className="cosmic-tools-section">
+        <h3>🤖 AI-POWERED JOB APPLICATIONS</h3>
+        <div className="cosmic-tool-grid">
+          <a href="https://aiapply.co/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🤖 AI Apply - Automated Applications
+          </a>
+          <a href="https://www.sonara.ai/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🎯 Sonara - AI Job Hunter
+          </a>
+          <a href="https://teal.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            💼 Teal - Career Growth Platform
+          </a>
+          <a href="https://huntr.co/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            📋 Huntr - Job Application Tracker
+          </a>
+        </div>
       </div>
 
-      {/* Enhanced matrix rain with variable speeds */}
-      <div className="matrix-rain-enhanced">
-        {Array.from({ length: 80 }, (_, i) => (
-          <div 
-            key={i} 
-            className="matrix-column-enhanced" 
-            style={{ 
-              left: `${i * 1.25}%`,
-              animationDuration: `${2 + Math.random() * 4}s`,
-              animationDelay: `${Math.random() * 2}s`
-            }}
-          >
-            {Array.from({ length: 40 }, (_, j) => (
-              <span 
-                key={j} 
-                className="matrix-char-enhanced"
-                style={{ 
-                  opacity: Math.random(),
-                  color: Math.random() > 0.7 ? cinematicThemes[currentTheme].accent : cinematicThemes[currentTheme].primary
-                }}
-              >
-                {String.fromCharCode(0x30A0 + Math.random() * 96)}
-              </span>
-            ))}
-          </div>
-        ))}
+      <div className="cosmic-tools-section">
+        <h3>🌐 REMOTE JOB PORTALS</h3>
+        <div className="cosmic-tool-grid">
+          <a href="https://remote.co/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🏠 Remote.co - Premium Remote Jobs
+          </a>
+          <a href="https://weworkremotely.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            💻 We Work Remotely - Top Portal
+          </a>
+          <a href="https://remotive.io/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            📧 Remotive - Weekly Job Newsletter
+          </a>
+          <a href="https://angel.co/jobs" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            👼 AngelList - Startup Jobs
+          </a>
+          <a href="https://nomadjobs.io/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            ✈️ Nomad Jobs - Location Independent
+          </a>
+          <a href="https://justremote.co/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🎯 JustRemote - Remote-First Companies
+          </a>
+          <a href="https://remotework.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🌍 RemoteWork.com - Global Opportunities
+          </a>
+          <a href="https://flexjobs.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🕐 FlexJobs - Flexible & Remote
+          </a>
+        </div>
       </div>
 
-      {/* Cosmic loading interface */}
-      <div className="cosmic-loading-content">
-        <div className="cosmic-title">
-          <span className="title-main">THRIVEREMOTE</span>
-          <span className="title-sub">QUANTUM CONSCIOUSNESS PORTAL</span>
+      <div className="cosmic-tools-section">
+        <h3>💼 FREELANCE PLATFORMS</h3>
+        <div className="cosmic-tool-grid">
+          <a href="https://upwork.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            ⬆️ Upwork - Global Freelance Platform
+          </a>
+          <a href="https://fiverr.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🎯 Fiverr - Gig Economy Leader
+          </a>
+          <a href="https://freelancer.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            💰 Freelancer - Project Marketplace
+          </a>
+          <a href="https://toptal.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🏆 Toptal - Elite Developers
+          </a>
+          <a href="https://guru.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🧙 Guru - Professional Services
+          </a>
+          <a href="https://99designs.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🎨 99designs - Design Competitions
+          </a>
         </div>
-        
-        <div className="loading-phase-display">
-          <div className="phase-text">{loadingPhase}</div>
-          <div className="neural-indicators">
-            <div className="neural-pulse"></div>
-            <div className="neural-pulse delay-1"></div>
-            <div className="neural-pulse delay-2"></div>
-          </div>
-        </div>
-        
-        <div className="cosmic-progress-container">
-          <div className="progress-outer-ring">
-            <div className="progress-inner-ring">
-              <div className="progress-percentage">{Math.floor(loadingProgress)}%</div>
-              <div className="progress-eta">
-                ETA: {Math.max(0, Math.floor((100 - loadingProgress) * 0.15))}s
-              </div>
-            </div>
-          </div>
-          <div 
-            className="progress-arc"
-            style={{
-              background: `conic-gradient(
-                ${cinematicThemes[currentTheme].primary} 0deg,
-                ${cinematicThemes[currentTheme].accent} ${(loadingProgress / 100) * 360}deg,
-                transparent ${(loadingProgress / 100) * 360}deg
-              )`
-            }}
-          />
-        </div>
-        
-        <div className="initialization-log">
-          <div className="log-line">█ QUANTUM FIELD GENERATORS: ONLINE</div>
-          <div className="log-line">█ NEURAL INTERFACE MATRIX: CALIBRATING</div>
-          <div className="log-line">█ DIMENSIONAL GATEWAY: ESTABLISHING</div>
-          <div className="log-line">█ CONSCIOUSNESS BRIDGE: SYNCHRONIZING</div>
-          <div className="log-line">█ REALITY ANCHOR POINTS: STABILIZING</div>
-          <div className="log-line pulsing">█ COSMIC AWARENESS: EXPANDING</div>
-        </div>
+      </div>
 
-        <div className="cosmic-loading-footer">
-          <div className="dimension-coords">COORDS: α-42.7851 β-173.4328 γ-∞</div>
-          <div className="reality-signature">REALITY SIGNATURE: THR1V3-R3M0T3-QU4NTUM</div>
+      <div className="cosmic-tools-section">
+        <h3>🔍 JOB SEARCH ENGINES</h3>
+        <div className="cosmic-tool-grid">
+          <a href="https://indeed.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🔍 Indeed - World's #1 Job Site
+          </a>
+          <a href="https://linkedin.com/jobs/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            💼 LinkedIn Jobs - Professional Network
+          </a>
+          <a href="https://glassdoor.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🏢 Glassdoor - Company Reviews
+          </a>
+          <a href="https://monster.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            👹 Monster - Career Resources
+          </a>
+          <a href="https://ziprecruiter.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            📫 ZipRecruiter - One-Click Apply
+          </a>
+          <a href="https://dice.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🎲 Dice - Tech Jobs Specialist
+          </a>
         </div>
       </div>
     </div>
   );
 
-  // Enhanced Window Components with cosmic styling
   const CosmicScanner = () => (
     <div className="cosmic-interface">
       <div className="cosmic-header">
         <span className="cosmic-prompt">quantum@scanner:~$</span> initiate-multidimensional-scan --reality-layers=∞
       </div>
-      <div className="scan-results-cosmic">
-        <div className="scan-line-cosmic">
-          <span className="scan-status success">◉</span> ARIZONA QUANTUM FIELD: 127 ACTIVE NODES
+      
+      <div className="cosmic-tools-section">
+        <h3>🌌 QUANTUM NETWORK ANALYSIS</h3>
+        <div className="cosmic-tool-grid">
+          <a href="https://speedtest.net/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            ⚡ Speedtest - Internet Speed Test
+          </a>
+          <a href="https://downdetector.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🔍 DownDetector - Service Status
+          </a>
+          <a href="https://whatismyipaddress.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🌍 What's My IP - Location & Security
+          </a>
+          <a href="https://mxtoolbox.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🛠️ MX Toolbox - Network Diagnostics
+          </a>
+          <a href="https://www.pingdom.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            📊 Pingdom - Website Monitoring
+          </a>
+          <a href="https://www.gtmetrix.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            📈 GTmetrix - Performance Analysis
+          </a>
         </div>
-        <div className="scan-line-cosmic">
-          <span className="scan-status success">◉</span> PEAK DISTRICT MATRIX: 89 NEURAL PATHWAYS
+      </div>
+
+      <div className="cosmic-tools-section">
+        <h3>🚀 INTERSTELLAR NAVIGATION</h3>
+        <div className="cosmic-tool-grid">
+          <a href="https://makemydrivefun.com" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🌌 Make My Drive Fun - Route Optimizer
+          </a>
+          <a href="https://waze.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🗺️ Waze - Community Navigation
+          </a>
+          <a href="https://maps.google.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            📍 Google Maps - Universal Navigation
+          </a>
+          <a href="https://gasbuddy.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            ⛽ GasBuddy - Fuel Price Tracker
+          </a>
+          <a href="https://roadtrippers.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🛣️ Roadtrippers - Trip Planner
+          </a>
+          <a href="https://yelp.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            ⭐ Yelp - Local Business Finder
+          </a>
         </div>
-        <div className="scan-line-cosmic">
-          <span className="scan-status warning">◉</span> REMOTE WORK PORTALS: 1,247 DIMENSIONAL RIFTS
+      </div>
+
+      <div className="cosmic-tools-section">
+        <h3>🔧 DEVELOPER TOOLS</h3>
+        <div className="cosmic-tool-grid">
+          <a href="https://github.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🐙 GitHub - Code Repository
+          </a>
+          <a href="https://stackoverflow.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            💬 Stack Overflow - Developer Q&A
+          </a>
+          <a href="https://codepen.io/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            ✏️ CodePen - Frontend Playground
+          </a>
+          <a href="https://replit.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🖥️ Replit - Online IDE
+          </a>
         </div>
-        <div className="scan-line-cosmic">
-          <span className="scan-status quantum">◉</span> CONSCIOUSNESS GATEWAYS: ACCESS EXPANDING
-        </div>
+      </div>
+    </div>
+  );
+
+  const DimensionalRelocation = () => (
+    <div className="cosmic-interface">
+      <div className="cosmic-header">
+        <span className="cosmic-prompt">quantum@relocation:~$</span> arizona-to-peakdistrict --dimensional-bridge
       </div>
       
-      <div className="network-tools-cosmic">
-        <div className="cosmic-tools-section">
-          <h3>🌌 QUANTUM NETWORK ANALYSIS</h3>
-          <div className="cosmic-tool-grid">
-            <a href="https://speedtest.net/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
-              ⚡ Neural Speed Analysis
-            </a>
-            <a href="https://downdetector.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
-              🔍 Reality Status Monitor
-            </a>
-            <a href="https://whatismyipaddress.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
-              🌍 Dimensional Coordinates
-            </a>
-            <a href="https://mxtoolbox.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
-              🛠️ Quantum Diagnostic Array
-            </a>
-          </div>
-        </div>
-
-        <div className="cosmic-tools-section">
-          <h3>🚀 INTERSTELLAR NAVIGATION</h3>
-          <div className="cosmic-tool-grid">
-            <a href="https://makemydrivefun.com" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
-              🌌 Cosmic Route Optimizer
-            </a>
-            <a href="https://waze.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
-              🗺️ Reality Navigation Matrix
-            </a>
-            <a href="https://maps.google.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
-              📍 Dimensional Mapping System
-            </a>
-            <a href="https://gasbuddy.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
-              ⛽ Energy Source Locator
-            </a>
-          </div>
+      <div className="cosmic-tools-section">
+        <h3>🏡 UK PROPERTY PORTALS</h3>
+        <div className="cosmic-tool-grid">
+          <a href="https://rightmove.co.uk/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🏠 Rightmove - UK's #1 Property Portal
+          </a>
+          <a href="https://zoopla.co.uk/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🔍 Zoopla - Property Search & Values
+          </a>
+          <a href="https://onthemarket.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            📍 OnTheMarket - Property Listings
+          </a>
+          <a href="https://primelocation.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            👑 PrimeLocation - Premium Properties
+          </a>
+          <a href="https://spareroom.co.uk/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🛏️ SpareRoom - Flatshare & Rentals
+          </a>
+          <a href="https://openrent.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🔓 OpenRent - Direct Landlord Rentals
+          </a>
         </div>
       </div>
 
-      <div className="quantum-visualization">
-        <div className="visualization-title">LIVE QUANTUM FIELD TOPOLOGY</div>
-        <div className="quantum-grid">
-          {Array.from({ length: 64 }, (_, i) => (
-            <div 
-              key={i} 
-              className={`quantum-node ${Math.random() > 0.7 ? 'active' : ''} ${Math.random() > 0.9 ? 'critical' : ''}`}
-              style={{
-                animationDelay: `${i * 0.05}s`,
-                '--quantum-color': cinematicThemes[currentTheme].accent
-              }}
-            />
-          ))}
+      <div className="cosmic-tools-section">
+        <h3>🇬🇧 UK IMMIGRATION & VISA</h3>
+        <div className="cosmic-tool-grid">
+          <a href="https://gov.uk/browse/visas-immigration" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🏛️ Gov.UK - Official Visa Information
+          </a>
+          <a href="https://gov.uk/skilled-worker-visa" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            💼 Skilled Worker Visa Guide
+          </a>
+          <a href="https://gov.uk/global-talent-visa" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🌟 Global Talent Visa
+          </a>
+          <a href="https://britishcouncil.org/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🇬🇧 British Council - Education & Culture
+          </a>
+          <a href="https://gov.uk/life-in-the-uk-test" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            📚 Life in the UK Test
+          </a>
+          <a href="https://gov.uk/english-language" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🗣️ English Language Requirements
+          </a>
+        </div>
+      </div>
+
+      <div className="cosmic-tools-section">
+        <h3>💰 COST OF LIVING COMPARISON</h3>
+        <div className="cosmic-tool-grid">
+          <a href="https://numbeo.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            📊 Numbeo - Cost of Living Database
+          </a>
+          <a href="https://expatistan.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🌍 Expatistan - City Cost Comparison
+          </a>
+          <a href="https://teleport.org/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🚀 Teleport - City Quality of Life
+          </a>
+          <a href="https://xe.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            💱 XE Currency - Exchange Rates
+          </a>
+          <a href="https://wise.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            💸 Wise - International Money Transfer
+          </a>
+          <a href="https://salary.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            💼 Salary.com - Compensation Data
+          </a>
+        </div>
+      </div>
+
+      <div className="cosmic-tools-section">
+        <h3>📦 INTERNATIONAL MOVING</h3>
+        <div className="cosmic-tool-grid">
+          <a href="https://sirelo.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            📦 Sirelo - Moving Company Quotes
+          </a>
+          <a href="https://movehub.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🏠 MoveHub - Relocation Resources
+          </a>
+          <a href="https://internationalmovers.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🌍 International Movers Network
+          </a>
+          <a href="https://shipito.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            📮 Shipito - Package Forwarding
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+
+  const StellarFinance = () => (
+    <div className="cosmic-interface">
+      <div className="cosmic-header">
+        <span className="cosmic-prompt">quantum@finance:~$</span> optimizing-stellar-resources --dimensional-wealth
+      </div>
+      
+      <div className="cosmic-tools-section">
+        <h3>💰 PERSONAL FINANCE MANAGEMENT</h3>
+        <div className="cosmic-tool-grid">
+          <a href="https://mint.intuit.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🌱 Mint - Free Budget Tracker
+          </a>
+          <a href="https://youneedabudget.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            📊 YNAB - You Need A Budget
+          </a>
+          <a href="https://personalcapital.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            💎 Personal Capital - Wealth Management
+          </a>
+          <a href="https://pocketguard.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🛡️ PocketGuard - Spending Tracker
+          </a>
+          <a href="https://everydollar.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            💵 EveryDollar - Zero-Based Budget
+          </a>
+          <a href="https://goodbudget.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            📱 Goodbudget - Envelope Method
+          </a>
+        </div>
+      </div>
+
+      <div className="cosmic-tools-section">
+        <h3>📈 INVESTMENT PLATFORMS</h3>
+        <div className="cosmic-tool-grid">
+          <a href="https://robinhood.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🏹 Robinhood - Commission-Free Trading
+          </a>
+          <a href="https://schwab.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🏦 Charles Schwab - Full-Service Broker
+          </a>
+          <a href="https://fidelity.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            💼 Fidelity - Investment Management
+          </a>
+          <a href="https://vanguard.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            📊 Vanguard - Low-Cost Index Funds
+          </a>
+          <a href="https://etrade.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            💻 E*TRADE - Online Trading Platform
+          </a>
+          <a href="https://tdameritrade.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            📈 TD Ameritrade - Advanced Trading
+          </a>
+        </div>
+      </div>
+
+      <div className="cosmic-tools-section">
+        <h3>🏦 BANKING & SAVINGS</h3>
+        <div className="cosmic-tool-grid">
+          <a href="https://ally.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🤝 Ally Bank - High-Yield Savings
+          </a>
+          <a href="https://marcus.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🏛️ Marcus by Goldman Sachs
+          </a>
+          <a href="https://capitalone.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            1️⃣ Capital One - Digital Banking
+          </a>
+          <a href="https://discover.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🔍 Discover Bank - Cashback Banking
+          </a>
+          <a href="https://chime.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🔔 Chime - Mobile-First Banking
+          </a>
+          <a href="https://simple.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            ⭕ Simple - Budgeting Bank
+          </a>
+        </div>
+      </div>
+
+      <div className="cosmic-tools-section">
+        <h3>💳 CREDIT & LOANS</h3>
+        <div className="cosmic-tool-grid">
+          <a href="https://creditkarma.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            📊 Credit Karma - Free Credit Scores
+          </a>
+          <a href="https://experian.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            📈 Experian - Credit Monitoring
+          </a>
+          <a href="https://sofi.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🎓 SoFi - Student Loan Refinancing
+          </a>
+          <a href="https://lendingtree.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🌳 LendingTree - Loan Marketplace
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+
+  const NeuralTasks = () => (
+    <div className="cosmic-interface">
+      <div className="cosmic-header">
+        <span className="cosmic-prompt">quantum@tasks:~$</span> optimizing-neural-pathways --productivity-matrix
+      </div>
+      
+      <div className="cosmic-tools-section">
+        <h3>📋 PROJECT MANAGEMENT</h3>
+        <div className="cosmic-tool-grid">
+          <a href="https://asana.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🎯 Asana - Team Project Management
+          </a>
+          <a href="https://trello.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            📋 Trello - Kanban Board System
+          </a>
+          <a href="https://notion.so/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            📝 Notion - All-in-One Workspace
+          </a>
+          <a href="https://monday.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            📅 Monday.com - Work OS Platform
+          </a>
+          <a href="https://clickup.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🖱️ ClickUp - Productivity Platform
+          </a>
+          <a href="https://airtable.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            📊 Airtable - Database & Spreadsheet
+          </a>
+        </div>
+      </div>
+
+      <div className="cosmic-tools-section">
+        <h3>⏰ TIME TRACKING & PRODUCTIVITY</h3>
+        <div className="cosmic-tool-grid">
+          <a href="https://toggl.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            ⏱️ Toggl - Time Tracking Tool
+          </a>
+          <a href="https://rescuetime.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🚑 RescueTime - Automatic Time Tracking
+          </a>
+          <a href="https://clockify.me/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🕐 Clockify - Free Time Tracker
+          </a>
+          <a href="https://forest.app/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🌲 Forest - Focus & Productivity
+          </a>
+          <a href="https://pomodone.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🍅 PomoDone - Pomodoro Timer
+          </a>
+          <a href="https://freedom.to/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🕊️ Freedom - Website & App Blocker
+          </a>
+        </div>
+      </div>
+
+      <div className="cosmic-tools-section">
+        <h3>📝 NOTE TAKING & DOCUMENTATION</h3>
+        <div className="cosmic-tool-grid">
+          <a href="https://evernote.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🐘 Evernote - Digital Note Taking
+          </a>
+          <a href="https://obsidian.md/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            💎 Obsidian - Connected Note Taking
+          </a>
+          <a href="https://roamresearch.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🕸️ Roam Research - Networked Thought
+          </a>
+          <a href="https://logseq.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            📓 Logseq - Privacy-First Notes
+          </a>
+          <a href="https://simplenote.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            📄 Simplenote - Clean Note Taking
+          </a>
+          <a href="https://standardnotes.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🔒 Standard Notes - Encrypted Notes
+          </a>
+        </div>
+      </div>
+
+      <div className="cosmic-tools-section">
+        <h3>📊 ANALYTICS & REPORTING</h3>
+        <div className="cosmic-tool-grid">
+          <a href="https://analytics.google.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            📈 Google Analytics - Web Analytics
+          </a>
+          <a href="https://mixpanel.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🧪 Mixpanel - Product Analytics
+          </a>
+          <a href="https://amplitude.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            📊 Amplitude - User Analytics
+          </a>
+          <a href="https://segment.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🔗 Segment - Customer Data Platform
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+
+  const CosmicLearning = () => (
+    <div className="cosmic-interface">
+      <div className="cosmic-header">
+        <span className="cosmic-prompt">quantum@learning:~$</span> expanding-consciousness --skill-acquisition
+      </div>
+      
+      <div className="cosmic-tools-section">
+        <h3>🎓 ONLINE COURSE PLATFORMS</h3>
+        <div className="cosmic-tool-grid">
+          <a href="https://coursera.org/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🎓 Coursera - University Courses
+          </a>
+          <a href="https://udemy.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            📚 Udemy - Practical Skills Training
+          </a>
+          <a href="https://edx.org/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🏛️ edX - Harvard & MIT Courses
+          </a>
+          <a href="https://pluralsight.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🔧 Pluralsight - Tech Skills Platform
+          </a>
+          <a href="https://skillshare.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🎨 Skillshare - Creative Learning
+          </a>
+          <a href="https://masterclass.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            👑 MasterClass - Learn from Experts
+          </a>
+        </div>
+      </div>
+
+      <div className="cosmic-tools-section">
+        <h3>💻 PROGRAMMING & DEVELOPMENT</h3>
+        <div className="cosmic-tool-grid">
+          <a href="https://freecodecamp.org/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🔥 FreeCodeCamp - Learn to Code
+          </a>
+          <a href="https://codecademy.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            💻 Codecademy - Interactive Coding
+          </a>
+          <a href="https://leetcode.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🧩 LeetCode - Coding Interview Prep
+          </a>
+          <a href="https://khanacademy.org/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🏫 Khan Academy - Free Learning
+          </a>
+          <a href="https://theodinproject.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            ⚡ The Odin Project - Full Stack
+          </a>
+          <a href="https://codewars.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            ⚔️ Codewars - Coding Challenges
+          </a>
+        </div>
+      </div>
+
+      <div className="cosmic-tools-section">
+        <h3>🎨 DESIGN & CREATIVE SKILLS</h3>
+        <div className="cosmic-tool-grid">
+          <a href="https://dribbble.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🏀 Dribbble - Design Inspiration
+          </a>
+          <a href="https://behance.net/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🎨 Behance - Creative Portfolios
+          </a>
+          <a href="https://figma.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🎯 Figma - Collaborative Design
+          </a>
+          <a href="https://canva.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🎨 Canva - Easy Graphic Design
+          </a>
+          <a href="https://unsplash.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            📸 Unsplash - Free Stock Photos
+          </a>
+          <a href="https://color.adobe.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🌈 Adobe Color - Color Palette Tool
+          </a>
+        </div>
+      </div>
+
+      <div className="cosmic-tools-section">
+        <h3>🌐 LANGUAGE LEARNING</h3>
+        <div className="cosmic-tool-grid">
+          <a href="https://duolingo.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🦉 Duolingo - Gamified Language Learning
+          </a>
+          <a href="https://babbel.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            💬 Babbel - Practical Conversations
+          </a>
+          <a href="https://rosettastone.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🗿 Rosetta Stone - Immersive Learning
+          </a>
+          <a href="https://busuu.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🌱 Busuu - AI-Powered Language Learning
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+
+  const RemoteWorkspace = () => (
+    <div className="cosmic-interface">
+      <div className="cosmic-header">
+        <span className="cosmic-prompt">quantum@workspace:~$</span> accessing-remote-dimensions --coworking-matrix
+      </div>
+      
+      <div className="cosmic-tools-section">
+        <h3>🏢 VIRTUAL COWORKING SPACES</h3>
+        <div className="cosmic-tool-grid">
+          <a href="https://flow.club/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🌊 Flow Club - Virtual Coworking
+          </a>
+          <a href="https://focusmate.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            👥 Focusmate - Body Doubling Sessions
+          </a>
+          <a href="https://caveday.org/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🗻 Cave Day - Deep Work Sessions
+          </a>
+          <a href="https://remoteyear.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🌍 Remote Year - Work & Travel
+          </a>
+          <a href="https://nomadlist.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🏝️ Nomad List - Digital Nomad Community
+          </a>
+          <a href="https://workfrom.co/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            ☕ WorkFrom - Workspace Finder
+          </a>
+        </div>
+      </div>
+
+      <div className="cosmic-tools-section">
+        <h3>💬 COMMUNICATION & COLLABORATION</h3>
+        <div className="cosmic-tool-grid">
+          <a href="https://slack.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            💬 Slack - Team Messaging
+          </a>
+          <a href="https://discord.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🎮 Discord - Voice & Text Chat
+          </a>
+          <a href="https://zoom.us/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            📹 Zoom - Video Conferencing
+          </a>
+          <a href="https://teams.microsoft.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            👥 Microsoft Teams - Collaboration Hub
+          </a>
+          <a href="https://miro.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🎨 Miro - Online Whiteboard
+          </a>
+          <a href="https://loom.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🎬 Loom - Screen Recording
+          </a>
+        </div>
+      </div>
+
+      <div className="cosmic-tools-section">
+        <h3>🗂️ FILE STORAGE & SHARING</h3>
+        <div className="cosmic-tool-grid">
+          <a href="https://drive.google.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            💾 Google Drive - Cloud Storage
+          </a>
+          <a href="https://dropbox.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            📦 Dropbox - File Synchronization
+          </a>
+          <a href="https://onedrive.live.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            ☁️ OneDrive - Microsoft Cloud
+          </a>
+          <a href="https://box.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            📋 Box - Enterprise File Sharing
+          </a>
+          <a href="https://wetransfer.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            📨 WeTransfer - Large File Transfer
+          </a>
+          <a href="https://mega.nz/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🔒 MEGA - Encrypted Cloud Storage
+          </a>
+        </div>
+      </div>
+
+      <div className="cosmic-tools-section">
+        <h3>🏠 REMOTE WORK RESOURCES</h3>
+        <div className="cosmic-tool-grid">
+          <a href="https://buffer.com/remote-work/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            📊 Buffer - Remote Work Resources
+          </a>
+          <a href="https://zapier.com/remote/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            ⚡ Zapier - Remote Work Guide
+          </a>
+          <a href="https://basecamp.com/remote-resources" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🏕️ Basecamp - Remote Work Resources
+          </a>
+          <a href="https://remoteyear.com/blog/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            📖 Remote Year - Nomad Insights
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+
+  const CareerOptimizer = () => (
+    <div className="cosmic-interface">
+      <div className="cosmic-header">
+        <span className="cosmic-prompt">quantum@career:~$</span> optimizing-professional-trajectory --quantum-leap
+      </div>
+      
+      <div className="cosmic-tools-section">
+        <h3>📄 RESUME & CV BUILDERS</h3>
+        <div className="cosmic-tool-grid">
+          <a href="https://resume.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            📝 Resume.com - Professional Resume Builder
+          </a>
+          <a href="https://canva.com/resumes/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🎨 Canva Resume - Design Templates
+          </a>
+          <a href="https://zety.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            ⚡ Zety - Resume & Cover Letter Builder
+          </a>
+          <a href="https://resumegenius.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🧠 Resume Genius - Expert Templates
+          </a>
+          <a href="https://novoresume.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            ⭐ NovoResume - Modern Resume Builder
+          </a>
+          <a href="https://enhancv.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            📈 Enhancv - Resume Enhancement
+          </a>
+        </div>
+      </div>
+
+      <div className="cosmic-tools-section">
+        <h3>🎯 INTERVIEW PREPARATION</h3>
+        <div className="cosmic-tool-grid">
+          <a href="https://pramp.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🤝 Pramp - Peer Mock Interviews
+          </a>
+          <a href="https://interviewing.io/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            💻 Interviewing.io - Technical Interviews
+          </a>
+          <a href="https://interviewcake.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🍰 Interview Cake - Coding Interview Prep
+          </a>
+          <a href="https://glassdoor.com/Interview/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🏢 Glassdoor Interviews - Company Questions
+          </a>
+          <a href="https://biginterview.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🎥 Big Interview - Video Practice
+          </a>
+          <a href="https://gainlo.co/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            📞 Gainlo - Mock Interviews
+          </a>
+        </div>
+      </div>
+
+      <div className="cosmic-tools-section">
+        <h3>💼 PROFESSIONAL NETWORKING</h3>
+        <div className="cosmic-tool-grid">
+          <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            💼 LinkedIn - Professional Network
+          </a>
+          <a href="https://meetup.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            👥 Meetup - Local Professional Groups
+          </a>
+          <a href="https://shapr.co/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            📱 Shapr - Professional Networking App
+          </a>
+          <a href="https://bumble.com/bizz" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🐝 Bumble Bizz - Business Networking
+          </a>
+          <a href="https://luma.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            📅 Luma - Professional Events
+          </a>
+          <a href="https://eventbrite.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            🎫 Eventbrite - Career Events
+          </a>
+        </div>
+      </div>
+
+      <div className="cosmic-tools-section">
+        <h3>📊 SALARY & COMPENSATION</h3>
+        <div className="cosmic-tool-grid">
+          <a href="https://glassdoor.com/Salaries/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            💰 Glassdoor Salaries - Compensation Data
+          </a>
+          <a href="https://payscale.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            📈 PayScale - Salary Information
+          </a>
+          <a href="https://levels.fyi/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            📊 Levels.fyi - Tech Compensation
+          </a>
+          <a href="https://salary.com/" target="_blank" rel="noopener noreferrer" className="cosmic-tool-link">
+            💼 Salary.com - Market Rate Data
+          </a>
         </div>
       </div>
     </div>
@@ -487,25 +1003,20 @@ const App = () => {
   const renderWindowContent = (component) => {
     switch (component) {
       case 'CosmicScanner': return <CosmicScanner />;
-      case 'QuantumJobs': return <div className="cosmic-interface"><div className="cosmic-coming-soon">🌌 Quantum Job Portal<br/>Scanning interdimensional opportunities...</div></div>;
-      case 'DimensionalRelocation': return <div className="cosmic-interface"><div className="cosmic-coming-soon">🌠 Dimensional Gateway<br/>Arizona ↔ Peak District portal active</div></div>;
-      case 'StellarFinance': return <div className="cosmic-interface"><div className="cosmic-coming-soon">⭐ Stellar Finance<br/>Tracking cosmic resources...</div></div>;
-      case 'NeuralTasks': return <div className="cosmic-interface"><div className="cosmic-coming-soon">🧠 Neural Task Matrix<br/>Organizing quantum thoughts...</div></div>;
-      case 'CosmicLearning': return <div className="cosmic-interface"><div className="cosmic-coming-soon">🚀 Cosmic Learning Hub<br/>Expanding consciousness...</div></div>;
+      case 'QuantumJobs': return <QuantumJobs />;
+      case 'DimensionalRelocation': return <DimensionalRelocation />;
+      case 'StellarFinance': return <StellarFinance />;
+      case 'NeuralTasks': return <NeuralTasks />;
+      case 'CosmicLearning': return <CosmicLearning />;
+      case 'RemoteWorkspace': return <RemoteWorkspace />;
+      case 'CareerOptimizer': return <CareerOptimizer />;
       case 'QuantumTerminal': return <div className="cosmic-interface"><div className="cosmic-coming-soon">⚡ Quantum Terminal<br/>Neural interface ready...</div></div>;
       case 'RealityAnalyzer': return <div className="cosmic-interface"><div className="cosmic-coming-soon">🔮 Reality Analyzer<br/>Processing dimensional data...</div></div>;
-      case 'CosmicGames': return <div className="cosmic-interface"><div className="cosmic-coming-soon">🎮 Cosmic Entertainment<br/>Mind-expanding experiences...</div></div>;
       case 'ConsciousnessVault': return <div className="cosmic-interface"><div className="cosmic-coming-soon">🔐 Consciousness Vault<br/>Securing neural patterns...</div></div>;
-      case 'DimensionalAchievements': return <div className="cosmic-interface"><div className="cosmic-coming-soon">🏆 Achievement Matrix<br/>Tracking evolution...</div></div>;
       case 'QuantumMonitor': return <div className="cosmic-interface"><div className="cosmic-coming-soon">📡 Quantum Monitor<br/>Reality stability: OPTIMAL</div></div>;
       default: return <div className="cosmic-interface"><div className="cosmic-coming-soon">🌌 Loading cosmic interface...</div></div>;
     }
   };
-
-  // Show cosmic loading screen
-  if (matrixLoading) {
-    return <CosmicLoadingScreen />;
-  }
 
   const currentThemeData = cinematicThemes[currentTheme];
 
