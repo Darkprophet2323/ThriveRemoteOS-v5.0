@@ -123,15 +123,15 @@ body, html {
 .refresh-btn {
   background: rgba(243, 139, 168, 0.9);
   border: 2px solid rgba(243, 139, 168, 0.6);
-  border-radius: 8px;
-  padding: 8px 16px;
+  border-radius: 6px;
+  padding: 6px 12px;
   color: #1e1e2e;
-  font-size: 12px;
+  font-size: 9px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
-  box-shadow: 0 4px 16px rgba(243, 139, 168, 0.3);
+  box-shadow: 0 3px 12px rgba(243, 139, 168, 0.3);
   animation: warningPulse 2s infinite;
 }
 
