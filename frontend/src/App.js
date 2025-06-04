@@ -1376,6 +1376,7 @@ const App = () => {
             height: window.size.height,
             zIndex: window.zIndex
           }}
+          onClick={(e) => handleWindowClick(e, window.id)}
         >
           <div className="window-titlebar" onMouseDown={(e) => handleMouseDown(e, window.id)}>
             <div className="window-title">
@@ -1391,7 +1392,7 @@ const App = () => {
           <div className="window-content">
             {window.id === 'files' ? <FileManager /> : renderApplicationContent(window.app)}
           </div>
-          <div className="window-resize-handle"></div>
+          <div className="window-resize-handle" onMouseDown={(e) => handleResizeStart(e, window.id)}></div>
         </div>
       ))}
 
