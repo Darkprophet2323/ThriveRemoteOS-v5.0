@@ -35,10 +35,27 @@ const App = () => {
     setJobAlerts(alerts);
   }, []);
 
-  // Calculate tip amount
+  // News ticker data
+  const [newsItems, setNewsItems] = useState([
+    "🚀 ThriveRemoteOS: Your Complete Remote Work Platform",
+    "💼 AI-Powered Job Applications - Apply to 100+ Jobs Daily", 
+    "🏔️ Peak District Relocation Guide - Phoenix to UK Migration Tools",
+    "🧮 Professional Waitress Toolkit - Tips Calculator & Training Resources",
+    "🤖 AI Assistant Hub - ChatGPT, Claude, Perplexity AI Integration",
+    "🚗 Make My Drive Fun - Ultimate Route Planning with Attractions",
+    "🏠 Live Property Search - Peak District Homes & Cost Comparisons",
+    "📊 Real-time Job Market Data - Premium Remote Opportunities",
+    "🎵 Integrated Music Player - Focus Tracks for Productivity"
+  ]);
+  const [currentNewsIndex, setCurrentNewsIndex] = useState(0);
+
+  // News ticker rotation
   useEffect(() => {
-    setTipAmount((billAmount * tipPercentage) / 100);
-  }, [billAmount, tipPercentage]);
+    const newsTimer = setInterval(() => {
+      setCurrentNewsIndex(prev => (prev + 1) % newsItems.length);
+    }, 4000); // Change every 4 seconds
+    return () => clearInterval(newsTimer);
+  }, [newsItems.length]);
 
   // Enhanced Desktop Applications with more categories
   const desktopApplications = [
