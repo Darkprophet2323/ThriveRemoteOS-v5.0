@@ -393,36 +393,100 @@ const App = () => {
       </div>
 
       <div className="content-header">
-        <h2>💼 Freelance & Gig Platforms</h2>
+        <h2>🏠 Advanced Remote Work Platforms</h2>
       </div>
       <div className="link-section">
         <div className="link-grid">
-          <a href="https://upwork.com/" target="_blank" rel="noopener noreferrer" className="app-link">
-            <div className="link-icon">⬆️</div>
+          <a href="https://remoteok.io/" target="_blank" rel="noopener noreferrer" className="app-link featured">
+            <div className="link-icon">🌐</div>
             <div className="link-details">
-              <div className="link-title">Upwork</div>
-              <div className="link-desc">Global freelance platform - all skills</div>
+              <div className="link-title">RemoteOK ⭐ TECH JOBS</div>
+              <div className="link-desc">Tech remote jobs board with real-time updates</div>
             </div>
           </a>
-          <a href="https://fiverr.com/" target="_blank" rel="noopener noreferrer" className="app-link">
+          <a href="https://www.workingnomads.co/" target="_blank" rel="noopener noreferrer" className="app-link">
+            <div className="link-icon">🎒</div>
+            <div className="link-details">
+              <div className="link-title">Working Nomads</div>
+              <div className="link-desc">Curated list of remote job opportunities</div>
+            </div>
+          </a>
+          <a href="https://remote.co/remote-jobs/" target="_blank" rel="noopener noreferrer" className="app-link">
+            <div className="link-icon">🏠</div>
+            <div className="link-details">
+              <div className="link-title">Remote.co Jobs</div>
+              <div className="link-desc">Verified 100% remote job listings</div>
+            </div>
+          </a>
+          <a href="https://www.remoteyear.com/" target="_blank" rel="noopener noreferrer" className="app-link">
+            <div className="link-icon">✈️</div>
+            <div className="link-details">
+              <div className="link-title">Remote Year</div>
+              <div className="link-desc">Travel programs for remote workers</div>
+            </div>
+          </a>
+          <a href="https://nomadlist.com/" target="_blank" rel="noopener noreferrer" className="app-link">
+            <div className="link-icon">🗺️</div>
+            <div className="link-details">
+              <div className="link-title">Nomad List</div>
+              <div className="link-desc">Best cities for digital nomads</div>
+            </div>
+          </a>
+          <a href="https://www.remote.tools/" target="_blank" rel="noopener noreferrer" className="app-link">
+            <div className="link-icon">🛠️</div>
+            <div className="link-details">
+              <div className="link-title">Remote Tools</div>
+              <div className="link-desc">Essential tools for remote teams</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div className="content-header">
+        <h2>🤖 AI Job Search & Application Tools</h2>
+      </div>
+      <div className="link-section">
+        <div className="link-grid">
+          <a href="https://aiapply.co/" target="_blank" rel="noopener noreferrer" className="app-link featured">
+            <div className="link-icon">🤖</div>
+            <div className="link-details">
+              <div className="link-title">AI Apply ⭐ FEATURED</div>
+              <div className="link-desc">Automated AI job applications - Apply to 100+ jobs daily</div>
+            </div>
+          </a>
+          <a href="https://www.ziprecruiter.com/candidate/ai-resume-builder" target="_blank" rel="noopener noreferrer" className="app-link">
+            <div className="link-icon">📄</div>
+            <div className="link-details">
+              <div className="link-title">ZipRecruiter AI Resume</div>
+              <div className="link-desc">AI-powered resume builder and optimization</div>
+            </div>
+          </a>
+          <a href="https://www.rezi.ai/" target="_blank" rel="noopener noreferrer" className="app-link">
+            <div className="link-icon">✨</div>
+            <div className="link-details">
+              <div className="link-title">Rezi AI</div>
+              <div className="link-desc">AI resume builder with ATS optimization</div>
+            </div>
+          </a>
+          <a href="https://www.careerflow.ai/" target="_blank" rel="noopener noreferrer" className="app-link">
+            <div className="link-icon">🚀</div>
+            <div className="link-details">
+              <div className="link-title">CareerFlow AI</div>
+              <div className="link-desc">AI-powered job search and career optimization</div>
+            </div>
+          </a>
+          <a href="https://www.simplify.jobs/" target="_blank" rel="noopener noreferrer" className="app-link">
+            <div className="link-icon">⚡</div>
+            <div className="link-details">
+              <div className="link-title">Simplify Jobs</div>
+              <div className="link-desc">One-click job applications with AI matching</div>
+            </div>
+          </a>
+          <a href="https://www.lazyapply.com/" target="_blank" rel="noopener noreferrer" className="app-link">
             <div className="link-icon">🎯</div>
             <div className="link-details">
-              <div className="link-title">Fiverr</div>
-              <div className="link-desc">Gig economy leader - services marketplace</div>
-            </div>
-          </a>
-          <a href="https://freelancer.com/" target="_blank" rel="noopener noreferrer" className="app-link">
-            <div className="link-icon">💰</div>
-            <div className="link-details">
-              <div className="link-title">Freelancer</div>
-              <div className="link-desc">Project marketplace with contests</div>
-            </div>
-          </a>
-          <a href="https://toptal.com/" target="_blank" rel="noopener noreferrer" className="app-link">
-            <div className="link-icon">🏆</div>
-            <div className="link-details">
-              <div className="link-title">Toptal</div>
-              <div className="link-desc">Elite developers network - top 3%</div>
+              <div className="link-title">LazyApply</div>
+              <div className="link-desc">Automated job application service</div>
             </div>
           </a>
         </div>
