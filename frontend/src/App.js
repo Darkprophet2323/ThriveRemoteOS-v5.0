@@ -1411,9 +1411,6 @@ const App = () => {
           <button className="taskbar-app" onClick={() => openApplication('terminal', 'Terminal')}>⚡</button>
           <button className="taskbar-app" onClick={() => openApplication('jobs', 'Job Hunter')}>💼</button>
           <button className="taskbar-app" onClick={() => openApplication('ai-tools', 'AI Tools')}>🤖</button>
-          <button className="taskbar-app quick-access-btn" onClick={() => setShowQuickPanel(!showQuickPanel)}>
-            🚀
-          </button>
         </div>
 
         <div className="taskbar-center">
