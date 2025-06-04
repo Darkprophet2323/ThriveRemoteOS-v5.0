@@ -1131,21 +1131,29 @@ const App = () => {
 
       {/* Desktop Shortcuts */}
       <div className="desktop-shortcuts">
+        <div className="desktop-shortcut" onClick={() => openApplication('jobs', 'Job Hunter')}>
+          <div className="shortcut-icon">💼</div>
+          <div className="shortcut-label">Job Hunter</div>
+        </div>
         <div className="desktop-shortcut" onClick={() => openApplication('ai-tools', 'AI Assistant Hub')}>
           <div className="shortcut-icon">🤖</div>
           <div className="shortcut-label">AI Tools</div>
         </div>
-        <div className="desktop-shortcut" onClick={() => window.open('https://makemydrivefun.com', '_blank')}>
-          <div className="shortcut-icon">🚗</div>
-          <div className="shortcut-label">Drive Fun</div>
-        </div>
-        <div className="desktop-shortcut" onClick={() => openApplication('jobs', 'Job Hunter')}>
-          <div className="shortcut-icon">💼</div>
-          <div className="shortcut-label">Remote Jobs</div>
-        </div>
         <div className="desktop-shortcut" onClick={() => openApplication('relocation', 'Relocation Helper')}>
           <div className="shortcut-icon">🏠</div>
           <div className="shortcut-label">Peak District</div>
+        </div>
+        <div className="desktop-shortcut" onClick={() => openApplication('waitress-tools', 'Waitress Toolkit')}>
+          <div className="shortcut-icon">🧮</div>
+          <div className="shortcut-label">Waitress Tools</div>
+        </div>
+        <div className="desktop-shortcut" onClick={() => openApplication('music', 'Music Player')}>
+          <div className="shortcut-icon">🎵</div>
+          <div className="shortcut-label">Music Player</div>
+        </div>
+        <div className="desktop-shortcut" onClick={() => window.open('https://makemydrivefun.com', '_blank')}>
+          <div className="shortcut-icon">🚗</div>
+          <div className="shortcut-label">Drive Fun</div>
         </div>
       </div>
 
