@@ -381,6 +381,14 @@ def main():
     # Test jobs
     tester.test_jobs_live()
 
+    # Test new features
+    print("\n🎵 Testing Music Player Features...")
+    tester.test_music_player_data()
+    tester.test_music_player_playlists()
+    
+    print("\n🍽️ Testing Service Jobs Hub Features...")
+    tester.test_service_jobs_hub()
+
     # Test dashboard stats
     tester.test_dashboard_stats()
 
