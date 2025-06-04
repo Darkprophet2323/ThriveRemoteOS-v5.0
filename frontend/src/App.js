@@ -1395,7 +1395,7 @@ const App = () => {
         </div>
         <div className="file-manager-content-scroll">
           <div className="file-manager-content">
-            <div className={`folder-${viewMode}`}>
+            <div className={viewMode === 'grid' ? 'folder-grid' : 'folder-list'}>
               {actualFileManagerFolders.map((folder, index) => (
                 <div key={index} className={`folder-item ${viewMode}`} onClick={folder.onClick}>
                   <div className="folder-icon" style={{ backgroundColor: folder.color }}>
