@@ -742,6 +742,227 @@ const App = () => {
     </div>
   );
 
+  const RelocationHelper = () => (
+    <div className="application-content">
+      <div className="content-header">
+        <h2>🏡 Phoenix to Peak District Relocation</h2>
+        <div className="quick-actions">
+          <button className="action-btn" onClick={() => window.open('https://makemydrivefun.com', '_blank')}>
+            🚗 Plan Your Journey
+          </button>
+          <button className="action-btn" onClick={() => window.open('https://gov.uk/browse/visas-immigration', '_blank')}>
+            📄 UK Visa Info
+          </button>
+        </div>
+      </div>
+
+      {/* Peak District Gallery */}
+      <PeakDistrictGallery />
+
+      <div className="content-header">
+        <h2>🏠 Property Search in Peak District</h2>
+      </div>
+      <div className="link-section">
+        <div className="property-grid">
+          <div className="property-card featured">
+            <img src="https://images.unsplash.com/photo-1596713751631-7732dfb95007?w=400&h=250&fit=crop" alt="Peak District Property" />
+            <div className="property-details">
+              <h3>2 Bedroom Cottage in Bakewell</h3>
+              <p className="price">£450,000</p>
+              <p className="location">📍 Bakewell, Derbyshire</p>
+              <p className="description">Charming stone cottage with stunning Peak District views, period features, and private garden.</p>
+              <div className="property-features">
+                <span>🛏️ 2 beds</span>
+                <span>🚿 1 bath</span>
+                <span>🌿 Garden</span>
+                <span>🚗 Parking</span>
+              </div>
+            </div>
+          </div>
+          
+          <div className="property-card">
+            <img src="https://images.unsplash.com/photo-1587713714775-fa70364f6445?w=400&h=250&fit=crop" alt="Hope Valley Property" />
+            <div className="property-details">
+              <h3>3 Bedroom House in Hope Valley</h3>
+              <p className="price">£325,000</p>
+              <p className="location">📍 Hope, Derbyshire</p>
+              <p className="description">Modern family home in the heart of Peak District with excellent transport links.</p>
+              <div className="property-features">
+                <span>🛏️ 3 beds</span>
+                <span>🚿 2 baths</span>
+                <span>🚗 Garage</span>
+                <span>🚌 Transport</span>
+              </div>
+            </div>
+          </div>
+          
+          <div className="property-card">
+            <img src="https://images.unsplash.com/photo-1594981005649-6ffab8d8a8d1?w=400&h=250&fit=crop" alt="Hathersage Farmhouse" />
+            <div className="property-details">
+              <h3>4 Bedroom Farmhouse</h3>
+              <p className="price">£650,000</p>
+              <p className="location">📍 Hathersage, Peak District</p>
+              <p className="description">Converted farmhouse with extensive grounds and panoramic Peak District views.</p>
+              <div className="property-features">
+                <span>🛏️ 4 beds</span>
+                <span>🚿 3 baths</span>
+                <span>🌿 Large Garden</span>
+                <span>🏚️ Outbuildings</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="content-header">
+        <h2>💰 Cost Comparison: Phoenix vs Peak District</h2>
+      </div>
+      <div className="comparison-section">
+        <div className="comparison-grid">
+          <div className="comparison-card phoenix">
+            <h3>🌵 Phoenix, Arizona</h3>
+            <div className="cost-item">
+              <span>🏠 Average Home Price:</span>
+              <span>$550,000</span>
+            </div>
+            <div className="cost-item">
+              <span>🛒 Living Costs:</span>
+              <span>High</span>
+            </div>
+            <div className="cost-item">
+              <span>🚗 Transport:</span>
+              <span>Car Required</span>
+            </div>
+            <div className="cost-item">
+              <span>🏥 Healthcare:</span>
+              <span>Private Insurance</span>
+            </div>
+            <div className="cost-item">
+              <span>🌤️ Weather:</span>
+              <span>300+ sunny days</span>
+            </div>
+          </div>
+          
+          <div className="comparison-card peak-district">
+            <h3>🏔️ Peak District, UK</h3>
+            <div className="cost-item">
+              <span>🏠 Average Home Price:</span>
+              <span>£475,000 (+15%)</span>
+            </div>
+            <div className="cost-item">
+              <span>🛒 Living Costs:</span>
+              <span>Lower (-20%)</span>
+            </div>
+            <div className="cost-item">
+              <span>🚌 Transport:</span>
+              <span>Excellent Public</span>
+            </div>
+            <div className="cost-item">
+              <span>🏥 Healthcare:</span>
+              <span>Free NHS</span>
+            </div>
+            <div className="cost-item">
+              <span>🌤️ Weather:</span>
+              <span>120 sunny days</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="content-header">
+        <h2>📋 Moving Checklist</h2>
+      </div>
+      <div className="checklist-section">
+        <div className="checklist-grid">
+          <div className="checklist-category">
+            <h4>📄 Documentation (6 months ahead)</h4>
+            <ul>
+              <li>Apply for UK visa</li>
+              <li>Get official document translations</li>
+              <li>Register with HMRC for tax</li>
+              <li>Obtain international driving permit</li>
+            </ul>
+          </div>
+          
+          <div className="checklist-category">
+            <h4>📦 Logistics (2 months ahead)</h4>
+            <ul>
+              <li>Book international shipping</li>
+              <li>Research pet import requirements</li>
+              <li>Plan for climate differences</li>
+              <li>Arrange temporary accommodation</li>
+            </ul>
+          </div>
+          
+          <div className="checklist-category">
+            <h4>🏠 Integration (Upon arrival)</h4>
+            <ul>
+              <li>Register with GP and dentist</li>
+              <li>Join local community groups</li>
+              <li>Explore Peak District trails</li>
+              <li>Register with local council</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div className="content-header">
+        <h2>🔗 Essential Resources</h2>
+      </div>
+      <div className="link-section">
+        <div className="link-grid">
+          <a href="https://gov.uk/browse/visas-immigration" target="_blank" rel="noopener noreferrer" className="app-link featured">
+            <div className="link-icon">🇬🇧</div>
+            <div className="link-details">
+              <div className="link-title">UK Government Visa Portal ⭐ OFFICIAL</div>
+              <div className="link-desc">Official UK visa application and requirements</div>
+            </div>
+          </a>
+          
+          <a href="https://rightmove.co.uk/" target="_blank" rel="noopener noreferrer" className="app-link">
+            <div className="link-icon">🏠</div>
+            <div className="link-details">
+              <div className="link-title">Rightmove</div>
+              <div className="link-desc">UK's largest property search website</div>
+            </div>
+          </a>
+          
+          <a href="https://zoopla.co.uk/" target="_blank" rel="noopener noreferrer" className="app-link">
+            <div className="link-icon">🔍</div>
+            <div className="link-details">
+              <div className="link-title">Zoopla</div>
+              <div className="link-desc">Property prices and area information</div>
+            </div>
+          </a>
+          
+          <a href="https://peakdistrict.gov.uk/" target="_blank" rel="noopener noreferrer" className="app-link">
+            <div className="link-icon">🏔️</div>
+            <div className="link-details">
+              <div className="link-title">Peak District National Park</div>
+              <div className="link-desc">Official Peak District information and guides</div>
+            </div>
+          </a>
+          
+          <a href="https://makemydrivefun.com" target="_blank" rel="noopener noreferrer" className="app-link featured">
+            <div className="link-icon">🚗</div>
+            <div className="link-details">
+              <div className="link-title">Make My Drive Fun ⭐ ROUTE PLANNER</div>
+              <div className="link-desc">Plan your journey with attractions and stops</div>
+            </div>
+          </a>
+          
+          <a href="https://nhs.uk/service-search" target="_blank" rel="noopener noreferrer" className="app-link">
+            <div className="link-icon">🏥</div>
+            <div className="link-details">
+              <div className="link-title">NHS Service Finder</div>
+              <div className="link-desc">Find local healthcare services</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+
   const QuickLinksHub = () => (
     <div className="application-content">
       <div className="content-header">
