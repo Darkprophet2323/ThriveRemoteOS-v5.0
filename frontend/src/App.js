@@ -161,13 +161,21 @@ const App = () => {
     ));
   };
 
-  // Window dragging functionality
+  // Enhanced window dragging with Raspberry Pi-style behavior
   const [dragging, setDragging] = useState(null);
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
+  const [windowBuffer, setWindowBuffer] = useState({});
 
   const handleMouseDown = (e, windowId) => {
+    e.preventDefault();
+    e.stopPropagation();
     const window = activeWindows.find(w => w.id === windowId);
     if (window && !window.maximized) {
+      // Bring window to front
+      setActiveWindows(prev => prev.map(w => 
+        w.id === windowId ? { ...w, zIndex: Math.max(...prev.map(win => win.zIndex)) + 1 } : w
+      ));
+      
       setDragging(windowId);
       setDragOffset({
         x: e.clientX - window.position.x,
@@ -176,33 +184,46 @@ const App = () => {
     }
   };
 
-  const handleMouseMove = (e) => {
+  const handleMouseMove = React.useCallback((e) => {
     if (dragging) {
+      e.preventDefault();
+      const newX = Math.max(0, Math.min(e.clientX - dragOffset.x, window.innerWidth - 200));
+      const newY = Math.max(40, Math.min(e.clientY - dragOffset.y, window.innerHeight - 100));
+      
       setActiveWindows(prev => prev.map(w => 
         w.id === dragging ? {
           ...w,
-          position: {
-            x: e.clientX - dragOffset.x,
-            y: e.clientY - dragOffset.y
-          }
+          position: { x: newX, y: newY }
         } : w
       ));
     }
-  };
+  }, [dragging, dragOffset]);
 
-  const handleMouseUp = () => {
+  const handleMouseUp = React.useCallback(() => {
     setDragging(null);
-  };
+  }, []);
 
-  // Add event listeners for dragging
+  // Enhanced event listeners with better performance
   useEffect(() => {
-    document.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mouseup', handleMouseUp);
+    if (dragging) {
+      document.addEventListener('mousemove', handleMouseMove, { passive: false });
+      document.addEventListener('mouseup', handleMouseUp, { passive: true });
+      document.body.style.userSelect = 'none';
+      document.body.style.cursor = 'move';
+    } else {
+      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseup', handleMouseUp);
+      document.body.style.userSelect = '';
+      document.body.style.cursor = '';
+    }
+    
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseup', handleMouseUp);
+      document.body.style.userSelect = '';
+      document.body.style.cursor = '';
     };
-  }, [dragging, dragOffset]);
+  }, [dragging, handleMouseMove, handleMouseUp]);
 
   // ENHANCED CONTENT COMPONENTS
 
