@@ -109,46 +109,46 @@ body, html {
 }
 
 .clock-widget {
-  top: 20px;
+  top: 120px;
   right: 20px;
   text-align: center;
   min-width: 140px;
 }
 
 .time-display {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 600;
   color: #cdd6f4;
   margin-bottom: 4px;
 }
 
 .date-display {
-  font-size: 14px;
+  font-size: 12px;
   color: #a6adc8;
   opacity: 0.8;
 }
 
 .weather-widget {
-  top: 120px;
+  top: 220px;
   right: 20px;
   text-align: center;
   min-width: 120px;
 }
 
 .weather-icon {
-  font-size: 32px;
+  font-size: 28px;
   margin-bottom: 8px;
 }
 
 .temperature {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
   color: #cdd6f4;
   margin-bottom: 4px;
 }
 
 .weather-desc {
-  font-size: 12px;
+  font-size: 11px;
   color: #a6adc8;
   opacity: 0.8;
 }
