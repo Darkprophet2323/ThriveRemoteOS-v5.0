@@ -447,6 +447,27 @@ const App = () => {
               <div className="link-desc">AI-powered presentation maker</div>
             </div>
           </a>
+          <a href="https://jasper.ai/" target="_blank" rel="noopener noreferrer" className="app-link">
+            <div className="link-icon">✍️</div>
+            <div className="link-details">
+              <div className="link-title">Jasper AI</div>
+              <div className="link-desc">AI writing assistant for marketing content</div>
+            </div>
+          </a>
+          <a href="https://grammarly.com/" target="_blank" rel="noopener noreferrer" className="app-link">
+            <div className="link-icon">📝</div>
+            <div className="link-details">
+              <div className="link-title">Grammarly</div>
+              <div className="link-desc">AI-powered writing and grammar assistant</div>
+            </div>
+          </a>
+          <a href="https://notion.so/product/ai" target="_blank" rel="noopener noreferrer" className="app-link">
+            <div className="link-icon">📋</div>
+            <div className="link-details">
+              <div className="link-title">Notion AI</div>
+              <div className="link-desc">AI-enhanced workspace and note-taking</div>
+            </div>
+          </a>
         </div>
       </div>
     </div>
