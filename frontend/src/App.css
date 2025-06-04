@@ -208,24 +208,24 @@ body, html {
 }
 
 /* === KDE WINDOW SYSTEM === */
+/* === RASPBERRY PI STYLE WINDOWS === */
 .kde-window {
   position: absolute;
-  background: rgba(30, 30, 46, 0.95);
+  background: rgba(30, 30, 46, 0.98);
   border: 1px solid rgba(205, 214, 244, 0.2);
-  border-radius: 12px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(20px);
-  overflow: hidden;
-  resize: both;
-  min-width: 600px;
-  min-height: 400px;
-  z-index: 100;
-  animation: window-appear 0.3s ease-out;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  transition: none;
+  will-change: transform;
+  contain: layout style paint;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 .kde-window.maximized {
   border-radius: 0;
-  resize: none;
 }
 
 .kde-window.minimized {
