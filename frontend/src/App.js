@@ -467,7 +467,7 @@ const App = () => {
       case 'network': return <NetworkTools />;
       case 'tasks': return (
         <div className="application-content">
-          <div className="content-header"><h2>📋 Task Management Tools</h2></div>
+          <div className="content-header"><h2>📋 Project Management Tools</h2></div>
           <div className="link-section">
             <div className="link-grid">
               <a href="https://asana.com/" target="_blank" rel="noopener noreferrer" className="app-link">
@@ -496,6 +496,53 @@ const App = () => {
                 <div className="link-details">
                   <div className="link-title">Monday.com</div>
                   <div className="link-desc">Work OS Platform</div>
+                </div>
+              </a>
+              <a href="https://clickup.com/" target="_blank" rel="noopener noreferrer" className="app-link">
+                <div className="link-icon">🖱️</div>
+                <div className="link-details">
+                  <div className="link-title">ClickUp</div>
+                  <div className="link-desc">Productivity Platform</div>
+                </div>
+              </a>
+              <a href="https://airtable.com/" target="_blank" rel="noopener noreferrer" className="app-link">
+                <div className="link-icon">📊</div>
+                <div className="link-details">
+                  <div className="link-title">Airtable</div>
+                  <div className="link-desc">Database & Spreadsheet</div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div className="content-header"><h2>⏰ Time Tracking & Focus</h2></div>
+          <div className="link-section">
+            <div className="link-grid">
+              <a href="https://toggl.com/" target="_blank" rel="noopener noreferrer" className="app-link">
+                <div className="link-icon">⏱️</div>
+                <div className="link-details">
+                  <div className="link-title">Toggl</div>
+                  <div className="link-desc">Time Tracking Tool</div>
+                </div>
+              </a>
+              <a href="https://rescuetime.com/" target="_blank" rel="noopener noreferrer" className="app-link">
+                <div className="link-icon">🚑</div>
+                <div className="link-details">
+                  <div className="link-title">RescueTime</div>
+                  <div className="link-desc">Automatic Time Tracking</div>
+                </div>
+              </a>
+              <a href="https://forest.app/" target="_blank" rel="noopener noreferrer" className="app-link">
+                <div className="link-icon">🌲</div>
+                <div className="link-details">
+                  <div className="link-title">Forest</div>
+                  <div className="link-desc">Focus & Productivity</div>
+                </div>
+              </a>
+              <a href="https://freedom.to/" target="_blank" rel="noopener noreferrer" className="app-link">
+                <div className="link-icon">🕊️</div>
+                <div className="link-details">
+                  <div className="link-title">Freedom</div>
+                  <div className="link-desc">Website & App Blocker</div>
                 </div>
               </a>
             </div>
@@ -533,6 +580,318 @@ const App = () => {
                 <div className="link-details">
                   <div className="link-title">Pluralsight</div>
                   <div className="link-desc">Tech Skills Platform</div>
+                </div>
+              </a>
+              <a href="https://codecademy.com/" target="_blank" rel="noopener noreferrer" className="app-link">
+                <div className="link-icon">💻</div>
+                <div className="link-details">
+                  <div className="link-title">Codecademy</div>
+                  <div className="link-desc">Interactive Coding</div>
+                </div>
+              </a>
+              <a href="https://leetcode.com/" target="_blank" rel="noopener noreferrer" className="app-link">
+                <div className="link-icon">🧩</div>
+                <div className="link-details">
+                  <div className="link-title">LeetCode</div>
+                  <div className="link-desc">Coding Interview Prep</div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div className="content-header"><h2>🎨 Design & Creative Skills</h2></div>
+          <div className="link-section">
+            <div className="link-grid">
+              <a href="https://figma.com/" target="_blank" rel="noopener noreferrer" className="app-link">
+                <div className="link-icon">🎯</div>
+                <div className="link-details">
+                  <div className="link-title">Figma</div>
+                  <div className="link-desc">Collaborative Design Tool</div>
+                </div>
+              </a>
+              <a href="https://canva.com/" target="_blank" rel="noopener noreferrer" className="app-link">
+                <div className="link-icon">🎨</div>
+                <div className="link-details">
+                  <div className="link-title">Canva</div>
+                  <div className="link-desc">Easy Graphic Design</div>
+                </div>
+              </a>
+              <a href="https://dribbble.com/" target="_blank" rel="noopener noreferrer" className="app-link">
+                <div className="link-icon">🏀</div>
+                <div className="link-details">
+                  <div className="link-title">Dribbble</div>
+                  <div className="link-desc">Design Inspiration</div>
+                </div>
+              </a>
+              <a href="https://unsplash.com/" target="_blank" rel="noopener noreferrer" className="app-link">
+                <div className="link-icon">📸</div>
+                <div className="link-details">
+                  <div className="link-title">Unsplash</div>
+                  <div className="link-desc">Free Stock Photos</div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      );
+      case 'workspace': return (
+        <div className="application-content">
+          <div className="content-header"><h2>🏢 Virtual Coworking Spaces</h2></div>
+          <div className="link-section">
+            <div className="link-grid">
+              <a href="https://flow.club/" target="_blank" rel="noopener noreferrer" className="app-link">
+                <div className="link-icon">🌊</div>
+                <div className="link-details">
+                  <div className="link-title">Flow Club</div>
+                  <div className="link-desc">Virtual Coworking</div>
+                </div>
+              </a>
+              <a href="https://focusmate.com/" target="_blank" rel="noopener noreferrer" className="app-link">
+                <div className="link-icon">👥</div>
+                <div className="link-details">
+                  <div className="link-title">Focusmate</div>
+                  <div className="link-desc">Body Doubling Sessions</div>
+                </div>
+              </a>
+              <a href="https://caveday.org/" target="_blank" rel="noopener noreferrer" className="app-link">
+                <div className="link-icon">🗻</div>
+                <div className="link-details">
+                  <div className="link-title">Cave Day</div>
+                  <div className="link-desc">Deep Work Sessions</div>
+                </div>
+              </a>
+              <a href="https://nomadlist.com/" target="_blank" rel="noopener noreferrer" className="app-link">
+                <div className="link-icon">🏝️</div>
+                <div className="link-details">
+                  <div className="link-title">Nomad List</div>
+                  <div className="link-desc">Digital Nomad Community</div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div className="content-header"><h2>💬 Communication & Collaboration</h2></div>
+          <div className="link-section">
+            <div className="link-grid">
+              <a href="https://slack.com/" target="_blank" rel="noopener noreferrer" className="app-link">
+                <div className="link-icon">💬</div>
+                <div className="link-details">
+                  <div className="link-title">Slack</div>
+                  <div className="link-desc">Team Messaging Platform</div>
+                </div>
+              </a>
+              <a href="https://discord.com/" target="_blank" rel="noopener noreferrer" className="app-link">
+                <div className="link-icon">🎮</div>
+                <div className="link-details">
+                  <div className="link-title">Discord</div>
+                  <div className="link-desc">Voice & Text Chat</div>
+                </div>
+              </a>
+              <a href="https://zoom.us/" target="_blank" rel="noopener noreferrer" className="app-link">
+                <div className="link-icon">📹</div>
+                <div className="link-details">
+                  <div className="link-title">Zoom</div>
+                  <div className="link-desc">Video Conferencing</div>
+                </div>
+              </a>
+              <a href="https://teams.microsoft.com/" target="_blank" rel="noopener noreferrer" className="app-link">
+                <div className="link-icon">👥</div>
+                <div className="link-details">
+                  <div className="link-title">Microsoft Teams</div>
+                  <div className="link-desc">Collaboration Hub</div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      );
+      case 'career': return (
+        <div className="application-content">
+          <div className="content-header"><h2>📄 Resume & CV Builders</h2></div>
+          <div className="link-section">
+            <div className="link-grid">
+              <a href="https://resume.com/" target="_blank" rel="noopener noreferrer" className="app-link">
+                <div className="link-icon">📝</div>
+                <div className="link-details">
+                  <div className="link-title">Resume.com</div>
+                  <div className="link-desc">Professional Resume Builder</div>
+                </div>
+              </a>
+              <a href="https://canva.com/resumes/" target="_blank" rel="noopener noreferrer" className="app-link">
+                <div className="link-icon">🎨</div>
+                <div className="link-details">
+                  <div className="link-title">Canva Resume</div>
+                  <div className="link-desc">Design Templates</div>
+                </div>
+              </a>
+              <a href="https://zety.com/" target="_blank" rel="noopener noreferrer" className="app-link">
+                <div className="link-icon">⚡</div>
+                <div className="link-details">
+                  <div className="link-title">Zety</div>
+                  <div className="link-desc">Resume & Cover Letter Builder</div>
+                </div>
+              </a>
+              <a href="https://novoresume.com/" target="_blank" rel="noopener noreferrer" className="app-link">
+                <div className="link-icon">⭐</div>
+                <div className="link-details">
+                  <div className="link-title">NovoResume</div>
+                  <div className="link-desc">Modern Resume Builder</div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div className="content-header"><h2>🎯 Interview Preparation</h2></div>
+          <div className="link-section">
+            <div className="link-grid">
+              <a href="https://pramp.com/" target="_blank" rel="noopener noreferrer" className="app-link">
+                <div className="link-icon">🤝</div>
+                <div className="link-details">
+                  <div className="link-title">Pramp</div>
+                  <div className="link-desc">Peer Mock Interviews</div>
+                </div>
+              </a>
+              <a href="https://interviewing.io/" target="_blank" rel="noopener noreferrer" className="app-link">
+                <div className="link-icon">💻</div>
+                <div className="link-details">
+                  <div className="link-title">Interviewing.io</div>
+                  <div className="link-desc">Technical Interviews</div>
+                </div>
+              </a>
+              <a href="https://interviewcake.com/" target="_blank" rel="noopener noreferrer" className="app-link">
+                <div className="link-icon">🍰</div>
+                <div className="link-details">
+                  <div className="link-title">Interview Cake</div>
+                  <div className="link-desc">Coding Interview Prep</div>
+                </div>
+              </a>
+              <a href="https://levels.fyi/" target="_blank" rel="noopener noreferrer" className="app-link">
+                <div className="link-icon">📊</div>
+                <div className="link-details">
+                  <div className="link-title">Levels.fyi</div>
+                  <div className="link-desc">Tech Compensation Data</div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      );
+      case 'relocation': return (
+        <div className="application-content">
+          <div className="content-header"><h2>🏡 UK Property Search</h2></div>
+          <div className="link-section">
+            <div className="link-grid">
+              <a href="https://rightmove.co.uk/" target="_blank" rel="noopener noreferrer" className="app-link">
+                <div className="link-icon">🏠</div>
+                <div className="link-details">
+                  <div className="link-title">Rightmove</div>
+                  <div className="link-desc">UK's #1 Property Portal</div>
+                </div>
+              </a>
+              <a href="https://zoopla.co.uk/" target="_blank" rel="noopener noreferrer" className="app-link">
+                <div className="link-icon">🔍</div>
+                <div className="link-details">
+                  <div className="link-title">Zoopla</div>
+                  <div className="link-desc">Property Search & Values</div>
+                </div>
+              </a>
+              <a href="https://onthemarket.com/" target="_blank" rel="noopener noreferrer" className="app-link">
+                <div className="link-icon">📍</div>
+                <div className="link-details">
+                  <div className="link-title">OnTheMarket</div>
+                  <div className="link-desc">Property Listings</div>
+                </div>
+              </a>
+              <a href="https://spareroom.co.uk/" target="_blank" rel="noopener noreferrer" className="app-link">
+                <div className="link-icon">🛏️</div>
+                <div className="link-details">
+                  <div className="link-title">SpareRoom</div>
+                  <div className="link-desc">Flatshare & Rentals</div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div className="content-header"><h2>🇬🇧 UK Immigration & Visa</h2></div>
+          <div className="link-section">
+            <div className="link-grid">
+              <a href="https://gov.uk/browse/visas-immigration" target="_blank" rel="noopener noreferrer" className="app-link">
+                <div className="link-icon">🏛️</div>
+                <div className="link-details">
+                  <div className="link-title">Gov.UK</div>
+                  <div className="link-desc">Official Visa Information</div>
+                </div>
+              </a>
+              <a href="https://gov.uk/skilled-worker-visa" target="_blank" rel="noopener noreferrer" className="app-link">
+                <div className="link-icon">💼</div>
+                <div className="link-details">
+                  <div className="link-title">Skilled Worker Visa</div>
+                  <div className="link-desc">Work Visa Guide</div>
+                </div>
+              </a>
+              <a href="https://numbeo.com/" target="_blank" rel="noopener noreferrer" className="app-link">
+                <div className="link-icon">📊</div>
+                <div className="link-details">
+                  <div className="link-title">Numbeo</div>
+                  <div className="link-desc">Cost of Living Database</div>
+                </div>
+              </a>
+              <a href="https://xe.com/" target="_blank" rel="noopener noreferrer" className="app-link">
+                <div className="link-icon">💱</div>
+                <div className="link-details">
+                  <div className="link-title">XE Currency</div>
+                  <div className="link-desc">Exchange Rates</div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      );
+      case 'terminal': return (
+        <div className="application-content">
+          <div className="content-header"><h2>⚡ Terminal Commands</h2></div>
+          <div style={{ padding: '20px', background: '#1e1e2e', borderRadius: '8px', fontFamily: 'monospace' }}>
+            <div style={{ color: '#89b4fa', marginBottom: '10px' }}>user@thrive-remote:~$ help</div>
+            <div style={{ color: '#cdd6f4', lineHeight: '1.5' }}>
+              Available commands:<br/>
+              • jobs - Open job search tools<br/>
+              • finance - Manage your finances<br/>
+              • network - Network diagnostics<br/>
+              • tasks - Project management<br/>
+              • learning - Educational resources<br/>
+              • clear - Clear terminal<br/>
+              • exit - Close terminal
+            </div>
+          </div>
+        </div>
+      );
+      case 'browser': return (
+        <div className="application-content">
+          <div className="content-header"><h2>🌍 Web Browser</h2></div>
+          <div className="link-section">
+            <div className="link-grid">
+              <a href="https://google.com/" target="_blank" rel="noopener noreferrer" className="app-link">
+                <div className="link-icon">🔍</div>
+                <div className="link-details">
+                  <div className="link-title">Google</div>
+                  <div className="link-desc">Search Engine</div>
+                </div>
+              </a>
+              <a href="https://github.com/" target="_blank" rel="noopener noreferrer" className="app-link">
+                <div className="link-icon">🐙</div>
+                <div className="link-details">
+                  <div className="link-title">GitHub</div>
+                  <div className="link-desc">Code Repository</div>
+                </div>
+              </a>
+              <a href="https://stackoverflow.com/" target="_blank" rel="noopener noreferrer" className="app-link">
+                <div className="link-icon">💬</div>
+                <div className="link-details">
+                  <div className="link-title">Stack Overflow</div>
+                  <div className="link-desc">Developer Q&A</div>
+                </div>
+              </a>
+              <a href="https://reddit.com/" target="_blank" rel="noopener noreferrer" className="app-link">
+                <div className="link-icon">📱</div>
+                <div className="link-details">
+                  <div className="link-title">Reddit</div>
+                  <div className="link-desc">Social News</div>
                 </div>
               </a>
             </div>
