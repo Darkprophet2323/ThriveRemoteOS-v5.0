@@ -124,7 +124,7 @@ body, html {
 }
 
 .clock-widget {
-  top: 120px;
+  top: 60px;
   right: 20px;
   text-align: center;
   min-width: 140px;
@@ -144,7 +144,7 @@ body, html {
 }
 
 .weather-widget {
-  top: 220px;
+  top: 160px;
   right: 20px;
   text-align: center;
   min-width: 120px;
