@@ -1776,8 +1776,8 @@ async def get_service_jobs():
         "job_categories": ["Server/Waitress", "Bartender", "Host/Hostess", "Food Runner", "Barista"]
     }
 
-@app.get("/api/music/tracks")
-async def get_music_tracks():
+@app.get("/api/realtime/notifications")
+async def get_realtime_notifications(session_token: str):
     """Get music tracks for the web player"""
     tracks = [
         {
