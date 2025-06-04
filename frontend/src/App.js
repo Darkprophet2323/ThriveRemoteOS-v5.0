@@ -1227,8 +1227,8 @@ const App = () => {
     );
   });
 
-  // Applications Menu Component
-  const ApplicationsMenu = () => {
+  // Applications Menu Component with Enhanced Scrolling
+  const ApplicationsMenu = React.memo(() => {
     const categorizedApps = desktopApplications.reduce((acc, app) => {
       if (!acc[app.category]) {
         acc[app.category] = [];
@@ -1243,28 +1243,30 @@ const App = () => {
           <h3>📱 Applications</h3>
           <button className="menu-close" onClick={() => setShowApplications(false)}>×</button>
         </div>
-        <div className="menu-categories">
-          {Object.entries(categorizedApps).map(([category, apps]) => (
-            <div key={category} className="category-section">
-              <h4>{category.charAt(0).toUpperCase() + category.slice(1)}</h4>
-              <div className="app-grid">
-                {apps.map(app => (
-                  <div 
-                    key={app.id} 
-                    className="menu-app"
-                    onClick={() => openApplication(app.id, app.name)}
-                  >
-                    <div className="app-icon">{app.icon}</div>
-                    <div className="app-name">{app.name}</div>
-                  </div>
-                ))}
+        <div className="menu-categories-scroll">
+          <div className="menu-categories">
+            {Object.entries(categorizedApps).map(([category, apps]) => (
+              <div key={category} className="category-section">
+                <h4>{category.charAt(0).toUpperCase() + category.slice(1)}</h4>
+                <div className="app-grid">
+                  {apps.map(app => (
+                    <div 
+                      key={app.id} 
+                      className="menu-app"
+                      onClick={() => openApplication(app.id, app.name)}
+                    >
+                      <div className="app-icon">{app.icon}</div>
+                      <div className="app-name">{app.name}</div>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     );
-  };
+  });
 
   return (
     <div className="kde-desktop">
