@@ -303,6 +303,18 @@ body, html {
   background: rgba(137, 180, 250, 0.7);
 }
 
+/* === WINDOW RESIZE HANDLE === */
+.window-resize-handle {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 16px;
+  height: 16px;
+  background: linear-gradient(-45deg, transparent 30%, rgba(137, 180, 250, 0.3) 40%, transparent 50%);
+  cursor: se-resize;
+  border-bottom-right-radius: 8px;
+}
+
 /* === APPLICATION CONTENT === */
 .application-content {
   padding: 24px;
