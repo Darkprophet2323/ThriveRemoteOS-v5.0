@@ -911,6 +911,16 @@ body, html {
   .time-display {
     font-size: 20px;
   }
+  
+  .app-icon {
+    font-size: 28px;
+  }
+  
+  .link-icon {
+    font-size: 20px;
+    width: 28px;
+    height: 28px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -922,6 +932,7 @@ body, html {
   .app-launcher, .taskbar-app {
     width: 36px;
     height: 36px;
+    font-size: 16px;
   }
   
   .taskbar-center {
@@ -951,6 +962,12 @@ body, html {
     padding: 12px;
   }
   
+  .link-icon {
+    font-size: 18px;
+    width: 24px;
+    height: 24px;
+  }
+  
   .desktop-widget {
     padding: 8px;
     min-width: 100px;
@@ -968,6 +985,88 @@ body, html {
     width: calc(100% - 40px);
     left: 20px;
     right: 20px;
+  }
+  
+  .app-grid {
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+    gap: 8px;
+  }
+  
+  .menu-app {
+    padding: 8px;
+  }
+  
+  .menu-app .app-icon {
+    font-size: 24px;
+    margin-bottom: 6px;
+  }
+  
+  .menu-app .app-name {
+    font-size: 10px;
+    line-height: 1.1;
+  }
+  
+  .folder-grid {
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 12px;
+  }
+  
+  .folder-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
+  }
+  
+  .folder-name {
+    font-size: 12px;
+  }
+  
+  .folder-info {
+    font-size: 10px;
+  }
+  
+  /* Music player mobile optimizations */
+  .now-playing {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+  
+  .player-controls {
+    justify-content: center;
+  }
+  
+  .control-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+  
+  .track-item {
+    padding: 8px;
+  }
+  
+  .track-details {
+    margin-left: 12px;
+  }
+  
+  .track-name {
+    font-size: 12px;
+  }
+  
+  .track-artist {
+    font-size: 10px;
+  }
+  
+  .track-genre {
+    font-size: 10px;
+    padding: 2px 6px;
+  }
+  
+  .play-button {
+    width: 28px;
+    height: 28px;
+    font-size: 10px;
   }
 }
 
@@ -998,11 +1097,19 @@ body, html {
     justify-content: space-between;
   }
   
+  .app-launcher, .taskbar-app {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+  
   .desktop-widget {
     position: relative;
     margin: 10px;
     float: right;
     clear: both;
+    padding: 6px;
+    min-width: 80px;
   }
   
   .clock-widget {
@@ -1013,6 +1120,170 @@ body, html {
   .weather-widget {
     top: auto;
     right: auto;
+  }
+  
+  .time-display {
+    font-size: 14px;
+  }
+  
+  .date-display, .weather-desc {
+    font-size: 10px;
+  }
+  
+  .temperature {
+    font-size: 14px;
+  }
+  
+  .weather-icon {
+    font-size: 20px;
+    margin-bottom: 4px;
+  }
+  
+  .link-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .app-link {
+    padding: 8px;
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+  
+  .link-icon {
+    font-size: 20px;
+    width: auto;
+    height: auto;
+    margin-bottom: 4px;
+  }
+  
+  .link-title {
+    font-size: 12px;
+  }
+  
+  .link-desc {
+    font-size: 10px;
+  }
+  
+  .content-header h2 {
+    font-size: 16px;
+  }
+  
+  .applications-menu {
+    bottom: 45px;
+    max-height: calc(100vh - 100px);
+  }
+  
+  .menu-header h3 {
+    font-size: 16px;
+  }
+  
+  .category-section h4 {
+    font-size: 12px;
+  }
+  
+  .app-grid {
+    grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+    gap: 6px;
+  }
+  
+  .menu-app {
+    padding: 6px;
+  }
+  
+  .menu-app .app-icon {
+    font-size: 20px;
+    margin-bottom: 4px;
+  }
+  
+  .menu-app .app-name {
+    font-size: 9px;
+    line-height: 1;
+  }
+  
+  /* Ultra-compact music player for mobile */
+  .now-playing {
+    padding: 12px;
+  }
+  
+  .track-title {
+    font-size: 14px;
+  }
+  
+  .track-artist {
+    font-size: 11px;
+  }
+  
+  .control-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+  
+  .track-list {
+    padding: 8px;
+  }
+  
+  .track-item {
+    padding: 6px;
+    margin-bottom: 4px;
+  }
+  
+  .track-number {
+    width: 24px;
+    font-size: 12px;
+  }
+  
+  .track-details {
+    margin-left: 8px;
+  }
+  
+  .track-name {
+    font-size: 11px;
+  }
+  
+  .track-artist {
+    font-size: 9px;
+  }
+  
+  .track-genre {
+    font-size: 8px;
+    padding: 1px 4px;
+    margin-right: 8px;
+  }
+  
+  .play-button {
+    width: 24px;
+    height: 24px;
+    font-size: 8px;
+  }
+  
+  .music-tools h3,
+  .playlist-section h3,
+  .music-sources h3 {
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+}
+
+/* === TOUCH OPTIMIZATIONS === */
+@media (hover: none) and (pointer: coarse) {
+  .app-link,
+  .menu-app,
+  .folder-item,
+  .taskbar-app,
+  .control-btn {
+    min-height: 44px;
+    touch-action: manipulation;
+  }
+  
+  .window-control {
+    min-width: 32px;
+    min-height: 32px;
+  }
+  
+  .track-item {
+    min-height: 44px;
   }
 }
 
